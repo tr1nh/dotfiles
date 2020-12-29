@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# This file use for create a blurry or pixel lockcreen with i3lock.
+
+# icon="$HOME/Pictures/iconLock.png"
+
+# take screenshot:
+tmpbg='/tmp/screen.png'
+#(( $# )) && { icon=$1; }
+scrot -o "$tmpbg"
+
+# create pixel effect:
+convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
+# create blur effect:
+#convert "$tmpbg" -blur 0x5 "$tmpbg"
+
+# merge icon:
+#convert "$tmpbg" "$icon" -gravity center -composite -matte "$tmpbg"
+
+# suspend message display:
+pkill -u "$USER" -USR1 dunst
+
+# lock the screen:
+i3lock -u -n -i "$tmpbg"
+
+# resume message display:
+pkill -u "$USER" -USR2 dunst
+
+exit 0

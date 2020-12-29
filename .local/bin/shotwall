@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Script that used to take a screenshot, then set it as feh wallpaper.
+
+screenshot
+wallpaperName=$(ls ~/Pictures/screenshots/ | tail -n 1)
+wallpaperPath=~/Pictures/screenshots/$wallpaperName
+echo $wallpaperPath
+wallpaper $wallpaperPath
+
+exit 0

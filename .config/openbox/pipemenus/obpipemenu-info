@@ -1,0 +1,17 @@
+#!/bin/bash
+ 
+echo "<openbox_pipe_menu>"
+echo   "<item label=\"$(date +'%A, %d/%m/%Y')\">"
+echo     "<action name=\"Execute\">"
+echo       "<execute>zenity --calendar</execute>"
+echo     "</action>"
+echo   "</item>"
+echo   "<item label=\"$(date +'%H:%M %p')\" />"
+echo   "<separator/>"
+echo   "<item label=\"Percentage: $(upower -i `upower -e | grep BAT` | grep percen | awk -F' ' '{print($2)}')\">"
+echo     "<action name=\"Execute\">"
+echo       "<execute>zenity --notification --text=\"$(upower -i `upower -e | grep BAT`)\"</execute>"
+echo     "</action>"
+echo   "</item>"
+echo   "<item label=\"State: $(upower -i `upower -e | grep BAT` | grep state | awk -F' ' '{print($2)}')\" />"
+echo "</openbox_pipe_menu>"

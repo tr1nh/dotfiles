@@ -1,0 +1,14 @@
+# wallpaper:
+~/.fehbg &
+
+# notification daemon:
+dunst &
+
+# compositor for desktop:
+#compton &
+
+# make volumn silent:
+amixer -q -D pulse sset Master 5% &
+
+# touchpad config:
+synaptics-touchpad &

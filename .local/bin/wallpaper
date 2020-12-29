@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# A simple script to set wallpaper for lxde desktop.
+# Create a desktop file and add this file into execute command.
+# Then right-click a picture and choose open with desktop file you have created.
+
+if [ ! -d ~/.local/share/backgrounds ]; then
+  mkdir -p ~/.local/share/backgrounds
+fi
+
+if [ -z $1 ];then
+	duongDan=`xsel -ob`
+else
+	duongDan=$1
+fi
+
+if [ -z $2 ]; then
+	fehMode="--bg-fill"
+	pcmanMode="crop"
+elif [ $2 = "tile" ]; then
+	fehMode="--bg-tile"
+	pcmanMode="tile"
+elif [ $2 = "center" ]; then
+	fehMode="--bg-center"
+	pcmanMode="center"
+elif [ $2 = "fill" ]; then
+	fehMode="--bg-fill"
+	pcmanMode="crop"
+fi
+
+cp "$duongDan" ~/.local/share/backgrounds/.wallpaper.jpg
+feh $fehMode ~/.local/share/backgrounds/.wallpaper.jpg
+
+if [ ! -z $(pgrep pcmanfm) ]; then
+	pcmanfm -w ~/.local/share/backgrounds/.wallpaper.jpg --wallpaper-mode=$pcmanMode
+fi
+
+exit 0

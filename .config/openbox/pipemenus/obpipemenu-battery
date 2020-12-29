@@ -1,0 +1,6 @@
+#!/bin/bash
+ 
+echo "<openbox_pipe_menu>"
+echo   "<item label=\"Percentage: $(upower -i `upower -e | grep BAT` | grep percen | awk -F' ' '{print($2)}')\" />"
+echo   "<item label=\"State: $(upower -i `upower -e | grep BAT` | grep state | awk -F' ' '{print($2)}')\" />"
+echo "</openbox_pipe_menu>"

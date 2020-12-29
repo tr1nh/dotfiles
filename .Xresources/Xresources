@@ -1,0 +1,41 @@
+#include "colorschemes/tango"
+
+! XTERM
+XTerm*font: xft:Consolas:pixelsize=11
+XTerm*saveLines: 15000
+XTerm*scrollBar: false
+XTerm*selectToClipboard: true
+
+
+! URXVT
+! font
+URxvt*font: xft:Roboto\ mono:pixelsize=11:minspace=False, xft:DejaVu Sans:pixelsize=10
+URxvt*letterSpace: 0
+
+! scroll
+URxvt*scrollStyle: rxvt
+URxvt*scrollBar: false
+URxvt*saveLines: 15000
+
+! cursor
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: 1
+URxvt*pointerBlank: true
+
+! bell
+URxvt*urgentOnBell: true
+URxvt.visualBell: false
+
+! opacity with real transparent (compositor)
+URxvt*depth: 32
+
+! opacity with fake transparent
+!URxvt*transparent: true
+!URxvt*shading: 30
+
+! perl extensions
+!URxvt*perl-ext-common: default,matcher,font-size
+
+! url direct
+!URxvt*matcher.button: 1
+!URxvt*urlLauncher: firefox

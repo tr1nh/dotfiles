@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# A simple script to take screenshot using scrot
+# Then add date to the file name
+# Then open the result instantly using feh 
+
+if [ ! -d "~/Pictures/screenshots/" ]; then
+	mkdir -p ~/Pictures/screenshots
+fi
+
+if [ -z $1 ]; then
+	action=--select
+else
+	action=-$1
+fi
+
+if [ -z $2 ]; then
+	interval=0
+else
+	interval=$2
+fi
+
+# sleep $interval
+scrot -d $interval $action -b -q 100 '%Y%m%d%H%M%S-screenshot.png' -e 'xclip -selection clipboard -t image/png < $f; mv $f ~/Pictures/screenshots/; notify-send "Chụp màn hình" "Đã lưu ảnh vào thư mục ~/Pictures/screenshots/$f"'

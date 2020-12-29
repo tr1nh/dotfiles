@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+id=$(xinput list | awk '/Synaptics/ {print $5}' | cut -d'=' -f 2)
+
+xinput set-prop $id "libinput Tapping Enabled" 1
+xinput set-prop $id "libinput Middle Emulation Enabled" 1
+xinput set-prop $id "libinput Scroll Method Enabled" {1,0,0} 
+
+exit 0

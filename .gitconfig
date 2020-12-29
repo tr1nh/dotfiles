@@ -1,0 +1,7 @@
+[user]
+	name = Khanh Trinh
+	email = trandiepkhanhtrinh@gmail.com
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

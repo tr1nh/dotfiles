@@ -1,0 +1,6 @@
+#!/bin/bash
+ 
+echo "<openbox_pipe_menu>"
+echo   "<item label=\"$(date +'%H:%M %p')\" />"
+echo   "<item label=\"$(date +'%A, ngày %d tháng %m, năm %Y')\" />"
+echo "</openbox_pipe_menu>"
