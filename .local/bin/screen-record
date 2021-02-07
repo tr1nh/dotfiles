@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -d ~/Videos ]; then
+if [ ! -d ~/Videos ]; then
   mkdir ~/Videos
 fi
 
@@ -16,8 +16,6 @@ ffmpeg -loglevel error \
 -i "$A" \
 -f pulse \
 -i default \
--filter_complex amerge \
 -ac 2 \
 -quality realtime \
 -y ~/Videos/`date +"%Y%m%d%H%M%S"`-video-record.mkv
-#-preset veryfast "$F"

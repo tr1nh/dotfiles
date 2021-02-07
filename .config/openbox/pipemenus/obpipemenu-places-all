@@ -27,7 +27,7 @@
 use strict;
 
 # Command to lauch files with
-my $cmd = "rofi-sensible-terminal -e sh -c 'nnn -C";
+my $cmd = "rofi-sensible-terminal -e sh -c 'f";
 
 my $path = $ARGV[0];
 $path = "$ENV{'HOME'}" if $path eq "";
