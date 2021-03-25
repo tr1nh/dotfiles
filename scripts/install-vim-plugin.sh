@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-mkdir -p bundle/start
-cd bundle/start
+if [ ! -d ~/.vim/pack/bundle/start ]; then
+  mkdir -p ~/.vim/pack/bundle/start
+fi
+
+cd ~/.vim/pack/bundle/start
 git clone https://github.com/dracula/vim
 git clone https://github.com/tomasr/molokai
 git clone https://github.com/morhetz/gruvbox
@@ -20,6 +23,4 @@ git clone https://github.com/othree/html5.vim
 # git clone https://github.com/preservim/nerdtree
 # git clone https://github.com/airblade/vim-gitgutter
 # git clone https://github.com/tpope/vim-fugitive
-
-echo "All done, copy bundle folder to your vim run time path..."
 

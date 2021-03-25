@@ -5,7 +5,7 @@
 dunst &
 
 # compositor for desktop:
-#compton &
+compton &
 
 # make volumn silent:
 amixer -q -D pulse sset Master 5% &

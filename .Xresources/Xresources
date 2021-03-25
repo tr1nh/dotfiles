@@ -1,4 +1,4 @@
-#include "colorschemes/tango"
+#include "colorschemes/selected"
 
 ! XTERM
 XTerm*font: xft:Consolas:pixelsize=11
