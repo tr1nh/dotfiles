@@ -14,13 +14,3 @@ git clone https://github.com/mg979/vim-visual-multi
 git clone https://github.com/mattn/emmet-vim
 git clone https://github.com/othree/html5.vim
 
-# cd ../..
-# mkdir -p bundle/opt
-# cd bundle/opt
-# git clone https://github.com/nathanaelkane/vim-indent-guides
-# git clone https://github.com/gregsexton/gitv
-# git clone https://github.com/dense-analysis/ale
-# git clone https://github.com/preservim/nerdtree
-# git clone https://github.com/airblade/vim-gitgutter
-# git clone https://github.com/tpope/vim-fugitive
-

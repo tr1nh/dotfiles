@@ -37,7 +37,3 @@ export EDITOR=vim
 # use native gtk in qt platform
 export QT_QPA_PLATFORMTHEME=gtk2
 
-# autostart x at login
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
-fi

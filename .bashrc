@@ -141,6 +141,8 @@ if ! shopt -oq posix; then
 fi
 
 # bash extensions
-for file in $(ls ~/.bash_extensions); do
-  source ~/.bash_extensions/$file
-done
+if [ -d ~/.bash_extensions ]; then
+  for file in $(ls ~/.bash_extensions); do
+    source ~/.bash_extensions/$file
+  done
+fi
