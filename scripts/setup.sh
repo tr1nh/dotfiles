@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 if [ ! -d dotfiles ]; then
-  git clone https://github.com/tr1nh/dotfiles
+  curl -LO https://github.com/tr1nh/dotfiles/archive/master.tar.gz
+  tar -xzvf master.tar.gz
+  mv dotfiles-master dotfiles
 fi
 
 cd dotfiles
@@ -80,10 +82,24 @@ if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
   sh scripts/install-mcmojave-cursors.sh
 fi
 
+# install gtk config:
+read -p "Install GTK config? (yes/no): " prompt
+if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
+  sh scripts/install-gtk-config.sh
+fi
+
 # update grub:
 read -p "Want to update grub? (yes/no): " prompt
 if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
   sudo vim /etc/default/grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 fi
+
+clean() {
+  cd ..
+  rm -rf dotfiles
+  rm master.tar.gz
+}
+
+trap clean EXIT
 
