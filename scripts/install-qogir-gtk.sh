@@ -8,7 +8,7 @@ cd install
 curl -L https://github.com/vinceliuice/Qogir-theme/archive/master.zip -o qogir-gtk.zip
 7z x qogir-gtk.zip
 cd Qogir-theme-master
-sh install.sh -t standard -w standard
+bash install.sh
 
 cd ..
 curl -L https://github.com/tr1nh/qogir-theme-openbox/archive/master.zip -o qogir-openbox.zip

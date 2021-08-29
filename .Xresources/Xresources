@@ -1,7 +1,7 @@
-#include "colorschemes/selected"
+#include "colorschemes/tango"
 
 ! XTERM
-XTerm*font: xft:Consolas:pixelsize=11
+XTerm*font: xft:Consolas:pixelsize=13
 XTerm*saveLines: 15000
 XTerm*scrollBar: false
 XTerm*selectToClipboard: true
@@ -9,7 +9,7 @@ XTerm*selectToClipboard: true
 
 ! URXVT
 ! font
-URxvt*font: xft:Roboto\ mono:pixelsize=11:minspace=False, xft:DejaVu Sans:pixelsize=10
+URxvt*font: xft:Roboto\ mono:pixelsize=13:minspace=False, xft:DejaVu Sans:pixelsize=12
 URxvt*letterSpace: 0
 
 ! scroll

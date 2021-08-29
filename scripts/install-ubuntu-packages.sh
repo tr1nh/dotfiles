@@ -1,22 +1,11 @@
 #!/usr/bin/env bash
 
-read -p "Install packages for (ubuntu/proot): " input
-
-if [ "$input" = "ubuntu" ]; then
-  sudo apt install tigervnc-common tigervnc-standalone-server xorg xinit \
-    openbox dunst rofi tint2 lxappearance adwaita-icon-theme-full libnotify-bin rxvt-unicode \
-    tree unrar p7zip-full pcmanfm \
-    curl git w3m transmission-cli firefox \
-    vim-gtk3 emacs imagemagick ffmpeg gifsicle scrot pandoc gimp inkscape libreoffice poppler-utils mupdf-tools \
-    feh mediainfo \
-    ghostscript build-essential python3-pip nudoku -y
-else
-  apt install tigervnc-common tigervnc-standalone-server \
-    openbox dunst rofi tint2 lxappearance adwaita-icon-theme-full libnotify-bin rxvt-unicode \
-    tree unrar p7zip-full pcmanfm \
-    curl git w3m transmission-cli firefox \
-    vim-gtk3 emacs imagemagick ffmpeg gifsicle scrot pandoc gimp inkscape libreoffice poppler-utils mupdf-tools \
-    feh vlc mediainfo \
-    ghostscript build-essential python3-pip nudoku -y
-fi
-
+sudo apt install tigervnc-common tigervnc-standalone-server xorg xinit alsa alsa-utils alsa-tools pulseaudio pulseaudio-utils \
+	xclip xsel xdotool wmctrl policykit-1-gnome \
+  i3 openbox openbox-menu zenity dunst rofi tint2 lxappearance libnotify-bin rxvt-unicode i3lock compton \
+	adwaita-icon-theme-full gtk2-engines-pixbuf gtk2-engines-murrine qt5-style-plugins \
+  tree unrar p7zip-full pcmanfm engrampa \
+  curl git w3m transmission-cli firefox \
+  vim-gtk3 emacs imagemagick ffmpeg gifsicle scrot maim pandoc libreoffice gimp inkscape poppler-utils mupdf-tools figlet toilet \
+  feh mediainfo mpv cmus pavucontrol \
+  ghostscript build-essential python3-pip nudoku -y

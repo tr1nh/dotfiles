@@ -35,7 +35,7 @@ if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
 
   read -p "Enable auto login tty1 for xinit? (yes/no): " prompt
   if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
-    echo -e "# autostart x at login\nif [ -z \"\${DISPLAY}\" ] && [ \"\${XDG_VTNR}\" -eq 1 ]; then\n  exec startx\nfi" >> ~/.bash_profile
+    echo "# autostart x at login\nif [ -z \"\${DISPLAY}\" ] && [ \"\${XDG_VTNR}\" -eq 1 ]; then\n  exec startx\nfi" >> ~/.bash_profile
   fi
 
   read -p "Install vim config for root? (yes/no): " prompt
@@ -51,10 +51,16 @@ if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
   sh scripts/install-bash-extensions.sh
 fi
 
-# install fonts:
-read -p "Install fonts? (yes/no): " prompt
+# install coding fonts:
+read -p "Install coding fonts? (yes/no): " prompt
 if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
-  sh scripts/install-fonts.sh
+  sh scripts/install-coding-fonts.sh
+fi
+
+# install ubuntu fonts:
+read -p "Install ubuntu fonts? (yes/no): " prompt
+if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
+  sh scripts/install-ubuntu-fonts.sh
 fi
 
 # install vim plugins:
@@ -73,13 +79,6 @@ fi
 read -p "Install Papirus icons? (yes/no): " prompt
 if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
   sh scripts/install-papirus-icon.sh
-  sh scripts/install-mcmojave-cursors.sh
-fi
-
-# install cursors:
-read -p "Install mc-mojave cursors? (yes/no): " prompt
-if [ "$prompt" = "yes" ] || [ "$prompt" = "y" ]; then
-  sh scripts/install-mcmojave-cursors.sh
 fi
 
 # install gtk config:
