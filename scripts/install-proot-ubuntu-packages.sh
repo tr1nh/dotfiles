@@ -2,7 +2,7 @@
 
 apt install tigervnc-common tigervnc-standalone-server pulseaudio pulseaudio-utils \
 	xclip xsel xdotool wmctrl policykit-1-gnome \
-  i3 openbox openbox-menu zenity dunst rofi tint2 lxappearance libnotify-bin rxvt-unicode-256color i3lock compton \
+  i3 openbox openbox-menu zenity dunst rofi tint2 lxappearance libnotify-bin rxvt-unicode i3lock compton \
 	adwaita-icon-theme-full \
   tree unrar p7zip-full pcmanfm engrampa \
   net-tools wget curl git w3m w3m-img transmission-cli firefox \
