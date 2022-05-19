@@ -8,4 +8,4 @@ apt install tigervnc-common tigervnc-standalone-server pulseaudio pulseaudio-uti
   net-tools wget curl git w3m w3m-img transmission-cli firefox \
   vim-gtk3 emacs imagemagick ffmpeg gifsicle scrot maim pandoc libreoffice gimp inkscape poppler-utils mupdf-tools figlet toilet \
   catimg feh mediainfo mpv cmus pavucontrol \
-  ghostscript build-essential python3-pip nudoku nethack-console
+  ghostscript build-essential python3-pip nudoku nethack-console -y
