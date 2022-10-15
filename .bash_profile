@@ -26,7 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="$PATH:/opt/nodejs/bin"
+# development PATH
+export PATH="$PATH:/opt/nodejs/bin:/opt/flutter/bin"
 
 # default terminal emulator
 export TERM=xterm-256color
@@ -37,3 +38,7 @@ export EDITOR=vim
 # use native gtk in qt platform
 export QT_QPA_PLATFORMTHEME=gtk2
 
+# auto run desktop if login via tty1
+# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#   exec startx
+# fi

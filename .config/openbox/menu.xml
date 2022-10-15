@@ -18,7 +18,7 @@
 		<!-- some favorite programs -->
 		<item label="Internet">
 			<action name="Execute">
-				<execute>firefox</execute>
+				<execute>firefox --private-window</execute>
 			</action>
 		</item>
 		<item label="Terminal">

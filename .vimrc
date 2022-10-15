@@ -46,8 +46,10 @@ set backup
 set writebackup
 
 " Config netrw:
-let g:netrw_banner=0
+let g:netrw_banner = 0
 let g:netrw_hide = 1
+let g:netrw_bufsettings = 'relativenumber number'
+let g:netrw_liststyle = 3
 
 " Enable mouse control:
 set mouse=a
@@ -122,11 +124,12 @@ nnoremap <Leader>fh :Hexplore<CR>
 nnoremap <Leader>ft :Texplore<CR>
 nnoremap <Leader>fl :Lexplore<CR>
 nnoremap <Leader>fr :Rexplore<CR>
+nnoremap <Leader>ff :find 
 
 " Shortcuts for working with clipboard:
 vnoremap <Leader>cy "+y<CR>
 vnoremap <Leader>cx "+x<CR>
-nnoremap <Leader>cp "+gp<CR>
+nnoremap <Leader>cp "+gp<CR>Config
 inoremap <Leader>cp <Esc>"+gpa<CR>
 vnoremap <Leader>cp "+gp<CR>
 nnoremap <Leader>cl 0v$h"+y$
@@ -171,3 +174,17 @@ nnoremap <Leader>tt :tabnew<CR>
 nnoremap <Leader>ts :tabs<CR>
 nnoremap <Leader>tm :tabm 
 nnoremap <Leader>to :tabonly<CR>
+nnoremap <Leader>tf :tabfind 
+
+" Set path for quickly find an item in a project:
+set path+=**
+
+" Shortcuts for code action in coc.nvim
+" nmap <silent><leader>a <Plug>(coc-codeaction)
+" vmap <silent><leader>a <Plug>(coc-codeaction-selected)
+
+" Shortcuts for code action in coc.nvim
+" nmap <silent><leader>d <Plug>(coc-definition)
+" nmap <silent><leader>D <Plug>(coc-implementation)
+" nmap <silent><leader>r <Plug>(coc-references)
+

@@ -1,16 +1,19 @@
-#include "colorschemes/tango"
 
-! XTERM
+! xterm
 XTerm*font: xft:Consolas:pixelsize=13
 XTerm*saveLines: 15000
 XTerm*scrollBar: false
 XTerm*selectToClipboard: true
 
 
-! URXVT
+! urxvt
 ! font
 URxvt*font: xft:Roboto\ mono:pixelsize=13:minspace=False, xft:DejaVu Sans:pixelsize=12
 URxvt*letterSpace: 0
+
+! color
+URxvt*background: #000000
+URxvt*foreground: #ffffff
 
 ! scroll
 URxvt*scrollStyle: rxvt

@@ -23,14 +23,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# load xresources
-if [ -f ~/.Xresources/Xresources ]; then
-  xrdb -merge ~/.Xresources/Xresources
-fi
-
-# start window manager
-exec openbox-session
-
 # start some nice programs
 
 #if [ -d /etc/X11/xinit/xinitrc.d ] ; then
@@ -45,4 +37,7 @@ exec openbox-session
 #xterm -geometry 80x50+494+51 &
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
+
+# start window manager
+exec openbox-session
 

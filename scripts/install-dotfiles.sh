@@ -1,15 +1,23 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
-read -p "Choose a text editor: " editor
+if [ ! -d dotfiles ]; then
+  curl -LO https://github.com/tr1nh/dotfiles/archive/master.tar.gz
+  tar -xzvf master.tar.gz
+  mv dotfiles-master dotfiles
+  echo "download dotfiles"
+fi
 
-entries=$(ls -a | grep -Ev '^[.]+$' | grep -Ev 'README.md|images|scripts|.git$' | xargs realpath > selected.txt)
-#read -n 1 -s -r -p "Choose file and folder for copy to home directory (press any key to continue)"
-"$editor" selected.txt
-xargs -a selected.txt -i{} cp -r {} ~
+cd dotfiles
 
-clean() {
-  echo "Cleaned temporary"
-  rm selected.txt
+cp -r .bash_profile .bashrc .config .gitconfig .inputrc .local .tmux.conf .vim .vimrc .Xdefaults .xinitrc .bookmark.sh .commacd.sh "$HOME"
+echo "installed dotfiles"
+
+_clean() {
+  cd ..
+  if [ -d dotfiles ]; then
+    rm -rf dotfiles master.tar.gz
+    echo "cleaned"
+  fi
 }
 
-trap clean EXIT
+trap _clean EXIT

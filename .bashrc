@@ -19,9 +19,6 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# store timestamp with history:
-# HISTTIMEFORMAT='%Y%m%d%H%M%S  '
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -59,33 +56,12 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Get git repository information in working directory:
-__git_status() {
-  STATUS=$(git status 2>/dev/null |
-    awk '
-      /^On branch / {printf($3)}
-      /^You are currently rebasing/ {printf("rebasing %s", $6)}
-      /^Initial commit/ {printf(" (init)")}
-      /^Untracked files/ {printf("|+")}
-      /^Changes not staged / {printf("|?")}
-      /^Changes to be committed/ {printf("|*")}
-      /^Your branch is ahead of/ {printf("|^")}
-      ')
-      if [ -n "$STATUS" ]; then
-        echo -ne "($STATUS) "
-      fi
-    }
-
 if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # PS1='\[\033[01;32m\]-> \[\033[01;34m\]\W \[\033[00m\]$(__git_status)\[\033[00m\]'
-    PS1='\[\033[01;34m\]$(pwd) \[\033[01;32m\]>\[\033[00m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    # PS1='-> \W '
-    PS1='$(pwd) > '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
+# unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -112,13 +88,13 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-# alias ll='ls -alF'
-# alias la='ls -A'
-# alias l='ls -CF'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -140,9 +116,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# bash extensions
-if [ -d ~/.bash_extensions ]; then
-  for file in $(ls ~/.bash_extensions); do
-    source ~/.bash_extensions/$file
-  done
+#
+
+# custom for unlimited history
+export HISTSIZE=
+export HISTFILESIZE=
+export HISTFILE=~/.bash_history_2 # where to save history
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # force prompt to write history after every command.
+
+# add timestamp for every executed commands
+export HISTTIMEFORMAT='%Y%m%d%H%M%S  '
+
+# customized prompt
+if [ "$color_prompt" = yes ]; then
+    PS1='\[\033[01;34m\]\w \[\033[01;32m\]->\[\033[00m\] '
+else
+    PS1='\w -> '
 fi
+unset color_prompt force_color_prompt
+
+# bash bookmark ultilities
+source ~/.bookmark.sh
+
+# commacd ultilities
+source ~/.commacd.sh
