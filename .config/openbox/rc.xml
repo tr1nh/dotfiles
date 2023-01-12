@@ -180,6 +180,10 @@
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop -->
     <!-- Show desktop -->
+    <keybind key="W-bracketright">
+      <action name="ToggleAlwaysOnTop"/>
+    </keybind>
+    <!-- Show desktop -->
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
