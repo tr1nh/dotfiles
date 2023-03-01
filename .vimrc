@@ -19,6 +19,7 @@ set norelativenumber
 set showcmd
 set showmatch
 set wildmenu
+set wildmode=longest:list,full
 set wrap
 set nocursorline
 set visualbell
@@ -50,6 +51,10 @@ let g:netrw_banner = 0
 let g:netrw_hide = 1
 let g:netrw_bufsettings = 'relativenumber number'
 let g:netrw_liststyle = 3
+
+" Config split
+set splitright
+set splitbelow
 
 " Enable mouse control:
 set mouse=a
@@ -87,10 +92,16 @@ endif
 " Change default leader key (my little finger too short for press backsplash key):
 let g:mapleader=","
 
-" Shortcuts for replace Esc key:
+" Shortcuts for replace Escapse key:
 nnoremap <Leader><Leader> <Esc>
 inoremap <Leader><Leader> <Esc>
 vnoremap <Leader><Leader> <Esc>
+tnoremap <Leader><Leader> <C-\><C-n>
+
+nnoremap <Leader>. <Esc>
+inoremap <Leader>. <Esc>
+vnoremap <Leader>. <Esc>
+tnoremap <Leader>. <C-\><C-n>
 
 " Shortcuts for open command mode (prompt):
 nnoremap <Leader>ee :
@@ -100,6 +111,8 @@ nnoremap <Leader>er :r!
 inoremap <Leader>er <ESC>:r!
 nnoremap <Leader>e1 :!
 inoremap <Leader>e1 <ESC>:!
+nnoremap <Leader>et :tab terminal<CR>
+nnoremap <Leader>eT :terminal<CR>
 
 " Shortcuts for quickly save and exit:
 nnoremap <Leader>ww :w<CR>
@@ -188,3 +201,18 @@ set path+=**
 " nmap <silent><leader>D <Plug>(coc-implementation)
 " nmap <silent><leader>r <Plug>(coc-references)
 
+" Shortcuts for split
+nnoremap <Leader>w <C-w>
+
+" Shortcuts in terminal mode
+tnoremap <Leader>tt <C-w>:tabnew<CR>
+tnoremap <Leader>et <C-w>:tab terminal<CR>
+tnoremap <Leader>eT <C-w>:terminal<CR>
+tnoremap <Leader>tm <C-w>:tabmove 
+tnoremap <Leader>tf <C-w>:tabfind 
+tnoremap <Leader>to <C-w>:tabonly<CR>
+tnoremap <Leader>gt <C-w>gt
+tnoremap <Leader>gT <C-w>gT
+tnoremap <Leader>q <C-w>:q!<CR>
+tnoremap <Leader>ft <C-w>:Texplore<CR>
+tnoremap <Leader>w <C-w>
