@@ -1,5 +1,5 @@
 " Enable file syntax highlight:
-filetype plugin indent on
+filetype plugin indent off
 syntax enable
 set t_Co=256
 

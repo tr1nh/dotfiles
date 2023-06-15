@@ -4,7 +4,7 @@
 apt update && apt upgrade
 apt update && apt upgrade
 
-apt install termux-api termux-services proot-distro tmux git htop at cronie openssl tree fzf p7zip unrar wget curl openssh transmission w3m nmap iproute2 httrack nano vim neovim emacs figlet poppler mupdf-tools imagemagick gifsicle ffmpeg man bat termimage catimg timg mediainfo mpv cmus pulseaudio build-essential python nodejs-lts jq tidy ghostscript nudoku nethack -y
+apt install termux-api termux-services proot-distro tmux git htop at cronie openssl tree fzf p7zip unrar wget curl openssh transmission w3m nmap netcat-openbsd iproute2 httrack nano vim neovim emacs figlet poppler mupdf-tools imagemagick gifsicle ffmpeg man bat termimage catimg timg mediainfo mpv cmus pulseaudio build-essential python nodejs-lts jq tidy ghostscript nudoku nethack -y
 
 if [ ! $? -eq 0 ]; then
   exit 1
