@@ -119,13 +119,13 @@ fi
 #
 
 # custom for unlimited history
-export HISTSIZE=
-export HISTFILESIZE=
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export HISTFILE=~/.bash_history_2 # where to save history
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # force prompt to write history after every command.
 
 # add timestamp for every executed commands
-export HISTTIMEFORMAT='%Y%m%d%H%M%S  '
+export HISTTIMEFORMAT='%Y%m%d %H%M%S  '
 
 # customized prompt
 if [ "$color_prompt" = yes ]; then

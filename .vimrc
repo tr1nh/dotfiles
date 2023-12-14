@@ -188,18 +188,36 @@ nnoremap <Leader>ts :tabs<CR>
 nnoremap <Leader>tm :tabm 
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>tf :tabfind 
+nnoremap <Leader>t1 1gt
+nnoremap <Leader>t2 2gt
+nnoremap <Leader>t3 3gt
+nnoremap <Leader>t4 4gt
+nnoremap <Leader>t5 5gt
+nnoremap <Leader>t6 6gt
+nnoremap <Leader>t7 7gt
+nnoremap <Leader>t8 8gt
+nnoremap <Leader>t9 9gt
+tnoremap <Leader>t1 <C-w>1gt
+tnoremap <Leader>t2 <C-w>2gt
+tnoremap <Leader>t3 <C-w>3gt
+tnoremap <Leader>t4 <C-w>4gt
+tnoremap <Leader>t5 <C-w>5gt
+tnoremap <Leader>t6 <C-w>6gt
+tnoremap <Leader>t7 <C-w>7gt
+tnoremap <Leader>t8 <C-w>8gt
+tnoremap <Leader>t9 <C-w>9gt
 
 " Set path for quickly find an item in a project:
 set path+=**
 
 " Shortcuts for code action in coc.nvim
-" nmap <silent><leader>a <Plug>(coc-codeaction)
-" vmap <silent><leader>a <Plug>(coc-codeaction-selected)
+nmap <silent><leader>a <Plug>(coc-codeaction)
+vmap <silent><leader>a <Plug>(coc-codeaction-selected)
 
 " Shortcuts for code action in coc.nvim
-" nmap <silent><leader>d <Plug>(coc-definition)
-" nmap <silent><leader>D <Plug>(coc-implementation)
-" nmap <silent><leader>r <Plug>(coc-references)
+nmap <silent><leader>d <Plug>(coc-definition)
+nmap <silent><leader>D <Plug>(coc-implementation)
+nmap <silent><leader>r <Plug>(coc-references)
 
 " Shortcuts for split
 nnoremap <Leader>w <C-w>
@@ -216,3 +234,17 @@ tnoremap <Leader>gT <C-w>gT
 tnoremap <Leader>q <C-w>:q!<CR>
 tnoremap <Leader>ft <C-w>:Texplore<CR>
 tnoremap <Leader>w <C-w>
+
+" Shortcuts for prettier & linter
+nnoremap <Leader>pp :CocCommand prettier.formatFile<CR>
+nnoremap <Leader>pd :DartFmt<CR>
+
+" Shortcuts for switch between favorite language syntax
+nnoremap <Leader>l0 :set ft=<CR>
+nnoremap <Leader>lh :set ft=html<CR>
+nnoremap <Leader>lc :set ft=css<CR>
+nnoremap <Leader>lj :set ft=javascript<CR>
+nnoremap <Leader>lJ :set ft=json<CR>
+nnoremap <Leader>ld :set ft=dart<CR>
+nnoremap <Leader>ls :set ft=sh<CR>
+nnoremap <Leader>lp :set ft=python<CR>

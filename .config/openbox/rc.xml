@@ -731,12 +731,12 @@
     <!-- Keybindings for open terminal -->
     <keybind key="W-KP_Divide">
       <action name="Execute">
-        <command>rofi-sensible-terminal</command>
+        <command>x-terminal-emulator</command>
       </action>
     </keybind>
     <keybind key="W-O">
       <action name="Execute">
-        <command>rofi-sensible-terminal</command>
+        <command>x-terminal-emulator</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
@@ -894,6 +894,33 @@
       <action name="Execute">
         <command>opacity.sh -d</command>
       </action>
+    </keybind>
+    <keybind key="W-v">
+      <action name="Execute">
+        <command>vn-typing</command>
+      </action>
+    </keybind>
+    <keybind key="W-s">
+      <keybind key="i">
+        <action name="Execute">
+          <command>sh -c 'scrot -s'</command>
+        </action>
+      </keybind>
+      <keybind key="S-i">
+        <action name="Execute">
+          <command>sh -c 'maim -s | xclip -t image/png -sel clipboard -in'</command>
+        </action>
+      </keybind>
+      <keybind key="v">
+        <action name="Execute">
+          <command>screen-record</command>
+        </action>
+      </keybind>
+      <keybind key="S-v">
+        <action name="Execute">
+          <command>pkill ffmpeg</command>
+        </action>
+      </keybind>
     </keybind>
   </keyboard>
   <mouse>
@@ -1203,7 +1230,7 @@
       </mousebind>
       <mousebind button="Middle" action="Press">
         <action name="Execute">
-          <command>rofi-sensible-terminal</command>
+          <command>x-terminal-emulator</command>
         </action>
       </mousebind>
       <mousebind button="Right" action="Press">
@@ -1250,7 +1277,7 @@
       <!-- Terminal -->
       <mousebind button="W-Middle" action="Press">
         <action name="Execute">
-          <command>rofi-sensible-terminal</command>
+          <command>x-terminal-emulator</command>
         </action>
       </mousebind>
       <!-- Switch windows -->

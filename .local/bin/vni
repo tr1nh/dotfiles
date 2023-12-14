@@ -19,7 +19,7 @@ result=$(echo "$text" | sed 's/y5/ỵ/g; s/y4/ỹ/g; s/y3/ỷ/g; s/y2/ỳ/g; s/y
 
 
 if [ "$should_copy" = "yes" ]; then
-  echo "$result" | tr '\n' ' ' | xsel -bi
+  echo "$result" | xsel -bi
 else
   echo "$result"
 fi
