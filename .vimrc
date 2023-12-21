@@ -40,11 +40,11 @@ set nohlsearch
 set smartcase
 
 " Config backup:
-set backupdir=~/.vim/backups
-set undodir=~/.vim/backups
-set directory=~/.vim/backups
-set backup
-set writebackup
+" set backupdir=~/.vim/backups
+" set undodir=~/.vim/backups
+" set directory=~/.vim/backups
+" set backup
+" set writebackup
 
 " Config netrw:
 let g:netrw_banner = 0
@@ -113,6 +113,8 @@ nnoremap <Leader>e1 :!
 inoremap <Leader>e1 <ESC>:!
 nnoremap <Leader>et :tab terminal<CR>
 nnoremap <Leader>eT :terminal<CR>
+nnoremap <Leader>eR 0v$hx:put=strftime('# %c')<CR>o<C-R>"<ESC>:r!<C-r>"<CR>j
+inoremap <Leader>eR <ESC>0v$hx:put=strftime('# %c')<CR>o<C-R>"<ESC>:r!<C-r>"<CR>o
 
 " Shortcuts for quickly save and exit:
 nnoremap <Leader>ww :w<CR>
