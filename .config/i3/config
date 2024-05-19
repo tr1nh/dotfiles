@@ -9,26 +9,30 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:DejaVu Sans Mono Bold 10
+font pango:Mono Bold 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+#exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -40,8 +44,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -177,16 +186,10 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
-#         status_command i3status
-# }
-
-# switch workspace
-bindsym $mod+comma workspace prev
-bindsym $mod+period workspace next
-
-# rename current workspace
-bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'Rename current workspace to: '
+bar {
+        #status_command i3status
+        status_command while sleep 1s; do date +'%d/%m/%Y %H:%M:%S '; done
+}
 
 # toggle status bar
 bindsym $mod+t bar mode toggle
@@ -197,68 +200,10 @@ bindsym $mod+b border toggle
 # toggle sticky for floating window
 bindsym $mod+Shift+s sticky toggle
 
-# typing vietnamese
-bindsym $mod+v exec vn-typing
-for_window [title="vn-typing"] floating enable
+# switch workspace
+bindsym $mod+comma workspace prev
+bindsym $mod+period workspace next
 
-# volume controller
-set $mode_volume Volume: [-] 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% [+] 
-mode "$mode_volume" {
-  bindsym a exec --no-startup-id pavucontrol; mode "default"
-  bindsym 0 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%   && $refresh_i3status
-  bindsym 1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 10%  && $refresh_i3status
-  bindsym 2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20%  && $refresh_i3status
-  bindsym 3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 30%  && $refresh_i3status
-  bindsym 4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%  && $refresh_i3status
-  bindsym 5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%  && $refresh_i3status
-  bindsym 6 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 60%  && $refresh_i3status
-  bindsym 7 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 70%  && $refresh_i3status
-  bindsym 8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 80%  && $refresh_i3status
-  bindsym 9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 90%  && $refresh_i3status
+# rename workspace
+bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'Rename current workspace to:'
 
-  bindsym m exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150%  && $refresh_i3status
-  bindsym t exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-  bindsym d exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  && $refresh_i3status
-  bindsym i exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  && $refresh_i3status
-  bindsym minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  && $refresh_i3status
-  bindsym equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  && $refresh_i3status
-
-  bindsym q mode "default"
-  bindsym c mode "default"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-bindsym $mod+Shift+v mode "$mode_volume"
-
-# colorscheme
-# class                   border    backgr.   text      indicator child_border
-client.focused            #4c7899   #285577   #ffffff   #2e9ef4   #285577
-client.focused_inactive   #333333   #5f676a   #ffffff   #484e50   #5f676a
-client.unfocused          #333333   #222222   #888888   #292d2e   #222222
-client.urgent             #2f343a   #900000   #ffffff   #900000   #900000
-client.placeholder        #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
-client.background         #ffffff
-
-
-# status bar
-bar {
-  status_command i3status
-  position bottom
-  mode dock
-  workspace_buttons yes
-  separator_symbol "|"
-
-  colors {
-    background           #000000
-    statusline           #ffffff
-    separator            #666666
-    focused_workspace    #4c7899   #285577   #ffffff
-    active_workspace     #333333   #5f676a   #ffffff
-    inactive_workspace   #333333   #222222   #888888
-    urgent_workspace     #2f343a   #900000   #ffffff
-    binding_mode         #2f343a   #900000   #ffffff
-  }
-}
-
-# wallpaper
-exec --no-startup-id ~/.fehbg
