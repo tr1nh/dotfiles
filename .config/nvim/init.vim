@@ -1,6 +1,3 @@
-" Enable file syntax highlight:
-filetype plugin indent off
-syntax enable
 set t_Co=256
 
 " Jump to matching XML/HTML tag 
@@ -118,10 +115,17 @@ nnoremap <Leader>er :r!
 inoremap <Leader>er <ESC>:r!
 nnoremap <Leader>e1 :!
 inoremap <Leader>e1 <ESC>:!
+nnoremap <Leader>e5 :%!
+inoremap <Leader>e5 <ESC>:%!
 nnoremap <Leader>et :tab terminal<CR>
 nnoremap <Leader>eT :terminal<CR>
-nnoremap <Leader>eR 0v$hx:put=strftime('# %c')<CR>o# <C-R>"<ESC>:r!<C-r>"<CR>j
-inoremap <Leader>eR <ESC>0v$hx:put=strftime('# %c')<CR>o# <C-R>"<ESC>:r!<C-r>"<CR>o
+nnoremap <Leader>el 0v$hx:put=strftime('# %s')<CR>o# <C-R>"<ESC>:r!<C-r>"<CR>j
+inoremap <Leader>el <ESC>0v$hx:put=strftime('# %s')<CR>o# <C-R>"<ESC>:r!<C-r>"<CR>o
+nnoremap <Leader>ei 0v$hx:put=strftime('# %c')<CR>o# <C-R>"<ESC>:r!echo '<C-r>"' \| bash -i<CR>j
+inoremap <Leader>ei <ESC>0v$hx:put=strftime('# %s')<CR>o# <C-R>"<ESC>:r!echo '<C-r>"' \| bash -i<CR>o
+nnoremap <Leader>edl :s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/g<CR>
+nnoremap <Leader>edg :%s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/g<CR>
+nnoremap <Leader>edc :%s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/gc<CR>
 
 " Shortcuts for quickly save and exit:
 nnoremap <Leader>ww :w<CR>
