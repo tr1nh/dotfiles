@@ -119,13 +119,22 @@ nnoremap <Leader>e5 :%!
 inoremap <Leader>e5 <ESC>:%!
 nnoremap <Leader>et :tab terminal<CR>
 nnoremap <Leader>eT :terminal<CR>
+
+" Shortcuts for execute system command
 nnoremap <Leader>el 0v$hx:put=strftime('# %s')<CR>o# <C-R>"<ESC>:r!<C-r>"<CR>j
 inoremap <Leader>el <ESC>0v$hx:put=strftime('# %s')<CR>o# <C-R>"<ESC>:r!<C-r>"<CR>o
 nnoremap <Leader>ei 0v$hx:put=strftime('# %c')<CR>o# <C-R>"<ESC>:r!echo '<C-r>"' \| bash -i<CR>j
 inoremap <Leader>ei <ESC>0v$hx:put=strftime('# %s')<CR>o# <C-R>"<ESC>:r!echo '<C-r>"' \| bash -i<CR>o
+
+" Shortcuts for date and timestamp
+vnoremap <Leader>ed :s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/g<CR>
 nnoremap <Leader>edl :s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/g<CR>
 nnoremap <Leader>edg :%s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/g<CR>
 nnoremap <Leader>edc :%s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/gc<CR>
+nnoremap <Leader>edt :put=strftime('%s')<CR>
+inoremap <Leader>edt <Esc>:put=strftime('%s')<CR>A
+nnoremap <Leader>edT :put=strftime('%Y%m%d%H%M%S')<CR>
+inoremap <Leader>edT <Esc>:put=strftime('%Y%m%d%H%M%S')<CR>A
 
 " Shortcuts for quickly save and exit:
 nnoremap <Leader>ww :w<CR>
@@ -263,3 +272,23 @@ nnoremap <Leader>lJ :set ft=json<CR>
 nnoremap <Leader>ld :set ft=dart<CR>
 nnoremap <Leader>ls :set ft=sh<CR>
 nnoremap <Leader>lp :set ft=python<CR>
+
+inoremap <Leader>p <C-x><C-f>
+
+nnoremap <Leader>xhe :%!xxd \| awk -F'  ' '{print $1}'<CR>
+nnoremap <Leader>xhd :%!xxd -r<CR>
+inoremap <Leader>xhe <Esc>:%!xxd \| awk -F'  ' '{print $1}'<CR>i
+inoremap <Leader>xhd <Esc>:%!xxd -r<CR>i
+vnoremap <Leader>xhe :!xxd \| awk -F'  ' '{print $1}'<CR>
+vnoremap <Leader>xhd :!xxd -r<CR>
+
+inoremap <Leader>xr <Esc>:%!tr 'A-Za-z' 'N-ZA-Mn-za-m'<CR>i
+nnoremap <Leader>xr :%!tr 'A-Za-z' 'N-ZA-Mn-za-m'<CR>
+vnoremap <Leader>xr :!tr 'A-Za-z' 'N-ZA-Mn-za-m''<CR>
+
+inoremap <Leader>xbe <Esc>:%!base64 -w 0<CR>i
+inoremap <Leader>xbd <Esc>:%!base64 -d -w 0<CR>i
+nnoremap <Leader>xbe :%!base64 -w 0<CR>
+nnoremap <Leader>xbd :%!base64 -d -w 0<CR>
+vnoremap <Leader>xbe :!base64 -w 0<CR>
+vnoremap <Leader>xbd :!base64 -d -w 0<CR>
