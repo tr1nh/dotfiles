@@ -54,7 +54,7 @@ let g:netrw_banner = 0
 let g:netrw_hide = 1
 let g:netrw_bufsettings = 'relativenumber number'
 let g:netrw_liststyle = 3
-let g:netrw_winsize = 25
+" let g:netrw_winsize = 25
 
 " Config split
 set splitright
@@ -273,8 +273,11 @@ nnoremap <Leader>ld :set ft=dart<CR>
 nnoremap <Leader>ls :set ft=sh<CR>
 nnoremap <Leader>lp :set ft=python<CR>
 
+" Shortcuts for file path completion
 inoremap <Leader>p <C-x><C-f>
+inoremap <Leader><C-i> <C-x><C-f> "<Leader + tab
 
+" Shortcuts for encode and decode
 nnoremap <Leader>xhe :%!xxd \| awk -F'  ' '{print $1}'<CR>
 nnoremap <Leader>xhd :%!xxd -r<CR>
 inoremap <Leader>xhe <Esc>:%!xxd \| awk -F'  ' '{print $1}'<CR>i
@@ -284,7 +287,7 @@ vnoremap <Leader>xhd :!xxd -r<CR>
 
 inoremap <Leader>xr <Esc>:%!tr 'A-Za-z' 'N-ZA-Mn-za-m'<CR>i
 nnoremap <Leader>xr :%!tr 'A-Za-z' 'N-ZA-Mn-za-m'<CR>
-vnoremap <Leader>xr :!tr 'A-Za-z' 'N-ZA-Mn-za-m''<CR>
+vnoremap <Leader>xr :!tr 'A-Za-z' 'N-ZA-Mn-za-m'<CR>
 
 inoremap <Leader>xbe <Esc>:%!base64 -w 0<CR>i
 inoremap <Leader>xbd <Esc>:%!base64 -d -w 0<CR>i
@@ -292,3 +295,9 @@ nnoremap <Leader>xbe :%!base64 -w 0<CR>
 nnoremap <Leader>xbd :%!base64 -d -w 0<CR>
 vnoremap <Leader>xbe :!base64 -w 0<CR>
 vnoremap <Leader>xbd :!base64 -d -w 0<CR>
+
+" Shortcuts for buffers
+nnoremap <Leader>bl :buffers<CR>
+nnoremap <Leader>bc :close<CR>
+nnoremap <Leader>bd :bd 
+nnoremap <Leader>bg :buffer 
