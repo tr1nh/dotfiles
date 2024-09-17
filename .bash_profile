@@ -36,6 +36,6 @@ export EDITOR=vim
 export QT_QPA_PLATFORMTHEME=gtk2
 
 # auto run desktop if login via tty1
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+if [[ -z "${DISPLAY}" ]] && [[ "${XDG_VTNR}" -eq 1 ]]; then
   exec startx
 fi
