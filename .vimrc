@@ -128,6 +128,12 @@ inoremap <Leader>vq <ESC>:set keymap=vietnamese-viqr_utf-8<CR>a
 inoremap <Leader>vt <ESC>:set keymap=vietnamese-telex_utf-8<CR>a
 inoremap <Leader>vv <ESC>:set keymap=vietnamese-vni_utf-8<CR>a
 
+" macos vim doesn't support keymap
+nnoremap <Leader>v :call Telex()<CR>
+vnoremap <Leader>v :<C-u>call VTelex()<CR>
+vnoremap <Leader>V :<C-u>call UnTelex()<CR>
+inoremap <Leader>v <ESC>V:call VTelex()<CR>A
+
 " map ui
 nnoremap <Leader>ut :colorscheme 
 nnoremap <Leader>ub :exec &background!="dark" ? "set background=dark" : "set background=light"<CR>
@@ -309,3 +315,557 @@ nnoremap <Leader>xbe :%!base64 -w 0<CR>
 nnoremap <Leader>xbd :%!base64 -d -w 0<CR>
 vnoremap <Leader>xbe :!base64 -w 0<CR>
 vnoremap <Leader>xbd :!base64 -d -w 0<CR>
+
+" Define the MultiSubstitute function
+function! Telex()
+	silent! %s/yj/ỵ/g
+	silent! %s/yx/ỹ/g
+	silent! %s/yr/ỷ/g
+	silent! %s/ys/ý/g
+	silent! %s/yf/ỳ/g
+	silent! %s/y\\/y/g
+
+	silent! %s/uwj/ự/g
+	silent! %s/uwx/ữ/g
+	silent! %s/uwr/ử/g
+	silent! %s/uws/ứ/g
+	silent! %s/uwf/ừ/g
+	silent! %s/uw\\/ư/g
+	silent! %s/uw/ư/g
+
+	silent! %s/uj/ụ/g
+	silent! %s/ux/ũ/g
+	silent! %s/ur/ủ/g
+	silent! %s/us/ú/g
+	silent! %s/uf/ù/g
+	silent! %s/u\\/u/g
+
+	silent! %s/owj/ợ/g
+	silent! %s/owx/ỡ/g
+	silent! %s/owr/ở/g
+	silent! %s/ows/ớ/g
+	silent! %s/owf/ờ/g
+	silent! %s/ow\\/ơ/g
+	silent! %s/ow/ơ/g
+
+	silent! %s/ooj/ộ/g
+	silent! %s/oox/ỗ/g
+	silent! %s/oor/ổ/g
+	silent! %s/oos/ố/g
+	silent! %s/oof/ồ/g
+	silent! %s/oo\\/ô/g
+	silent! %s/oo/ô/g
+
+	silent! %s/oj/ọ/g
+	silent! %s/ox/õ/g
+	silent! %s/or/ỏ/g
+	silent! %s/os/ó/g
+	silent! %s/of/ò/g
+	silent! %s/o\\/o/g
+
+	silent! %s/ij/ị/g
+	silent! %s/ix/ĩ/g
+	silent! %s/ir/ỉ/g
+	silent! %s/is/í/g
+	silent! %s/if/ì/g
+	silent! %s/i\\/i/g
+
+	silent! %s/eej/ệ/g
+	silent! %s/eex/ễ/g
+	silent! %s/eer/ể/g
+	silent! %s/ees/ế/g
+	silent! %s/eef/ề/g
+	silent! %s/ee\\/ê/g
+	silent! %s/ee/ê/g
+
+	silent! %s/ej/ẹ/g
+	silent! %s/ex/ẽ/g
+	silent! %s/er/ẻ/g
+	silent! %s/es/é/g
+	silent! %s/ef/è/g
+	silent! %s/e\\/e/g
+
+	silent! %s/dd/đ/g
+	silent! %s/d\\/d/g
+
+	silent! %s/aaj/ậ/g
+	silent! %s/aax/ẫ/g
+	silent! %s/aar/ẩ/g
+	silent! %s/aas/ấ/g
+	silent! %s/aaf/ầ/g
+	silent! %s/aa\\/â/g
+	silent! %s/aa/â/g
+
+	silent! %s/awj/ặ/g
+	silent! %s/awx/ẵ/g
+	silent! %s/awr/ẳ/g
+	silent! %s/aws/ắ/g
+	silent! %s/awf/ằ/g
+	silent! %s/aw\\/ă/g
+	silent! %s/aw/ă/g
+
+	silent! %s/aj/ạ/g
+	silent! %s/ax/ã/g
+	silent! %s/ar/ả/g
+	silent! %s/as/á/g
+	silent! %s/af/à/g
+	silent! %s/a\\/a/g
+
+	silent! %s/YJ/Ỵ/g
+	silent! %s/YX/Ỹ/g
+	silent! %s/YR/Ỷ/g
+	silent! %s/YS/Ý/g
+	silent! %s/YF/Ỳ/g
+	silent! %s/Y\\/Y/g
+
+	silent! %s/UWJ/Ự/g
+	silent! %s/UWX/Ữ/g
+	silent! %s/UWR/Ử/g
+	silent! %s/UWS/Ứ/g
+	silent! %s/UWF/Ừ/g
+	silent! %s/UW\\/Ư/g
+	silent! %s/UW/Ư/g
+
+	silent! %s/UJ/Ụ/g
+	silent! %s/UX/Ũ/g
+	silent! %s/UR/Ủ/g
+	silent! %s/US/Ú/g
+	silent! %s/UF/Ù/g
+	silent! %s/U\\/U/g
+
+	silent! %s/OWJ/Ợ/g
+	silent! %s/OWX/Ỡ/g
+	silent! %s/OWR/Ở/g
+	silent! %s/OWS/Ớ/g
+	silent! %s/OWF/Ờ/g
+	silent! %s/OW\\/Ơ/g
+	silent! %s/OW/Ơ/g
+
+	silent! %s/OOJ/Ộ/g
+	silent! %s/OOX/Ỗ/g
+	silent! %s/OOR/Ổ/g
+	silent! %s/OOS/Ố/g
+	silent! %s/OOF/Ồ/g
+	silent! %s/OO\\/Ô/g
+	silent! %s/OO/Ô/g
+
+	silent! %s/OJ/Ọ/g
+	silent! %s/OX/Õ/g
+	silent! %s/OR/Ỏ/g
+	silent! %s/OS/Ó/g
+	silent! %s/OF/Ò/g
+	silent! %s/O\\/O/g
+
+	silent! %s/IJ/Ị/g
+	silent! %s/IX/Ĩ/g
+	silent! %s/IR/Ỉ/g
+	silent! %s/IS/Í/g
+	silent! %s/IF/Ì/g
+	silent! %s/I\\/I/g
+
+	silent! %s/EEJ/Ệ/g
+	silent! %s/EEX/Ễ/g
+	silent! %s/EER/Ể/g
+	silent! %s/EES/Ế/g
+	silent! %s/EEF/Ề/g
+	silent! %s/EE\\/Ê/g
+	silent! %s/EE/Ê/g
+
+	silent! %s/EJ/Ẹ/g
+	silent! %s/EX/Ẽ/g
+	silent! %s/ER/Ẻ/g
+	silent! %s/ES/É/g
+	silent! %s/EF/È/g
+	silent! %s/E\\/E/g
+	silent! %s/E/E/g
+
+	silent! %s/DD/Đ/g
+	silent! %s/D\\/D/g
+
+	silent! %s/AAJ/Ậ/g
+	silent! %s/AAX/Ẫ/g
+	silent! %s/AAR/Ẩ/g
+	silent! %s/AAS/Ấ/g
+	silent! %s/AAF/Ầ/g
+	silent! %s/AA\\/Â/g
+	silent! %s/AA/Â/g
+
+	silent! %s/AWJ/Ặ/g
+	silent! %s/AWX/Ẵ/g
+	silent! %s/AWR/Ẳ/g
+	silent! %s/AWS/Ắ/g
+	silent! %s/AWF/Ằ/g
+	silent! %s/AW\\/Ă/g
+	silent! %s/AW/Ă/g
+
+	silent! %s/AJ/Ạ/g
+	silent! %s/AX/Ã/g
+	silent! %s/AR/Ả/g
+	silent! %s/AS/Á/g
+	silent! %s/AF/À/g
+	silent! %s/A\\/A/g
+endfunction
+
+function! VTelex()
+	silent! '<,'>s/yj/ỵ/g
+	silent! '<,'>s/yx/ỹ/g
+	silent! '<,'>s/yr/ỷ/g
+	silent! '<,'>s/ys/ý/g
+	silent! '<,'>s/yf/ỳ/g
+	silent! '<,'>s/y\\/y/g
+
+	silent! '<,'>s/uwj/ự/g
+	silent! '<,'>s/uwx/ữ/g
+	silent! '<,'>s/uwr/ử/g
+	silent! '<,'>s/uws/ứ/g
+	silent! '<,'>s/uwf/ừ/g
+	silent! '<,'>s/uw\\/ư/g
+	silent! '<,'>s/uw/ư/g
+
+	silent! '<,'>s/uj/ụ/g
+	silent! '<,'>s/ux/ũ/g
+	silent! '<,'>s/ur/ủ/g
+	silent! '<,'>s/us/ú/g
+	silent! '<,'>s/uf/ù/g
+	silent! '<,'>s/u\\/u/g
+
+	silent! '<,'>s/owj/ợ/g
+	silent! '<,'>s/owx/ỡ/g
+	silent! '<,'>s/owr/ở/g
+	silent! '<,'>s/ows/ớ/g
+	silent! '<,'>s/owf/ờ/g
+	silent! '<,'>s/ow\\/ơ/g
+	silent! '<,'>s/ow/ơ/g
+
+	silent! '<,'>s/ooj/ộ/g
+	silent! '<,'>s/oox/ỗ/g
+	silent! '<,'>s/oor/ổ/g
+	silent! '<,'>s/oos/ố/g
+	silent! '<,'>s/oof/ồ/g
+	silent! '<,'>s/oo\\/ô/g
+	silent! '<,'>s/oo/ô/g
+
+	silent! '<,'>s/oj/ọ/g
+	silent! '<,'>s/ox/õ/g
+	silent! '<,'>s/or/ỏ/g
+	silent! '<,'>s/os/ó/g
+	silent! '<,'>s/of/ò/g
+	silent! '<,'>s/o\\/o/g
+
+	silent! '<,'>s/ij/ị/g
+	silent! '<,'>s/ix/ĩ/g
+	silent! '<,'>s/ir/ỉ/g
+	silent! '<,'>s/is/í/g
+	silent! '<,'>s/if/ì/g
+	silent! '<,'>s/i\\/i/g
+
+	silent! '<,'>s/eej/ệ/g
+	silent! '<,'>s/eex/ễ/g
+	silent! '<,'>s/eer/ể/g
+	silent! '<,'>s/ees/ế/g
+	silent! '<,'>s/eef/ề/g
+	silent! '<,'>s/ee\\/ê/g
+	silent! '<,'>s/ee/ê/g
+
+	silent! '<,'>s/ej/ẹ/g
+	silent! '<,'>s/ex/ẽ/g
+	silent! '<,'>s/er/ẻ/g
+	silent! '<,'>s/es/é/g
+	silent! '<,'>s/ef/è/g
+	silent! '<,'>s/e\\/e/g
+
+	silent! '<,'>s/dd/đ/g
+	silent! '<,'>s/d\\/d/g
+
+	silent! '<,'>s/aaj/ậ/g
+	silent! '<,'>s/aax/ẫ/g
+	silent! '<,'>s/aar/ẩ/g
+	silent! '<,'>s/aas/ấ/g
+	silent! '<,'>s/aaf/ầ/g
+	silent! '<,'>s/aa\\/â/g
+	silent! '<,'>s/aa/â/g
+
+	silent! '<,'>s/awj/ặ/g
+	silent! '<,'>s/awx/ẵ/g
+	silent! '<,'>s/awr/ẳ/g
+	silent! '<,'>s/aws/ắ/g
+	silent! '<,'>s/awf/ằ/g
+	silent! '<,'>s/aw\\/ă/g
+	silent! '<,'>s/aw/ă/g
+
+	silent! '<,'>s/aj/ạ/g
+	silent! '<,'>s/ax/ã/g
+	silent! '<,'>s/ar/ả/g
+	silent! '<,'>s/as/á/g
+	silent! '<,'>s/af/à/g
+	silent! '<,'>s/a\\/a/g
+
+	silent! '<,'>s/YJ/Ỵ/g
+	silent! '<,'>s/YX/Ỹ/g
+	silent! '<,'>s/YR/Ỷ/g
+	silent! '<,'>s/YS/Ý/g
+	silent! '<,'>s/YF/Ỳ/g
+	silent! '<,'>s/Y\\/Y/g
+
+	silent! '<,'>s/UWJ/Ự/g
+	silent! '<,'>s/UWX/Ữ/g
+	silent! '<,'>s/UWR/Ử/g
+	silent! '<,'>s/UWS/Ứ/g
+	silent! '<,'>s/UWF/Ừ/g
+	silent! '<,'>s/UW\\/Ư/g
+	silent! '<,'>s/UW/Ư/g
+
+	silent! '<,'>s/UJ/Ụ/g
+	silent! '<,'>s/UX/Ũ/g
+	silent! '<,'>s/UR/Ủ/g
+	silent! '<,'>s/US/Ú/g
+	silent! '<,'>s/UF/Ù/g
+	silent! '<,'>s/U\\/U/g
+
+	silent! '<,'>s/OWJ/Ợ/g
+	silent! '<,'>s/OWX/Ỡ/g
+	silent! '<,'>s/OWR/Ở/g
+	silent! '<,'>s/OWS/Ớ/g
+	silent! '<,'>s/OWF/Ờ/g
+	silent! '<,'>s/OW\\/Ơ/g
+	silent! '<,'>s/OW/Ơ/g
+
+	silent! '<,'>s/OOJ/Ộ/g
+	silent! '<,'>s/OOX/Ỗ/g
+	silent! '<,'>s/OOR/Ổ/g
+	silent! '<,'>s/OOS/Ố/g
+	silent! '<,'>s/OOF/Ồ/g
+	silent! '<,'>s/OO\\/Ô/g
+	silent! '<,'>s/OO/Ô/g
+
+	silent! '<,'>s/OJ/Ọ/g
+	silent! '<,'>s/OX/Õ/g
+	silent! '<,'>s/OR/Ỏ/g
+	silent! '<,'>s/OS/Ó/g
+	silent! '<,'>s/OF/Ò/g
+	silent! '<,'>s/O\\/O/g
+
+	silent! '<,'>s/IJ/Ị/g
+	silent! '<,'>s/IX/Ĩ/g
+	silent! '<,'>s/IR/Ỉ/g
+	silent! '<,'>s/IS/Í/g
+	silent! '<,'>s/IF/Ì/g
+	silent! '<,'>s/I\\/I/g
+
+	silent! '<,'>s/EEJ/Ệ/g
+	silent! '<,'>s/EEX/Ễ/g
+	silent! '<,'>s/EER/Ể/g
+	silent! '<,'>s/EES/Ế/g
+	silent! '<,'>s/EEF/Ề/g
+	silent! '<,'>s/EE\\/Ê/g
+	silent! '<,'>s/EE/Ê/g
+
+	silent! '<,'>s/EJ/Ẹ/g
+	silent! '<,'>s/EX/Ẽ/g
+	silent! '<,'>s/ER/Ẻ/g
+	silent! '<,'>s/ES/É/g
+	silent! '<,'>s/EF/È/g
+	silent! '<,'>s/E\\/E/g
+	silent! '<,'>s/E/E/g
+
+	silent! '<,'>s/DD/Đ/g
+	silent! '<,'>s/D\\/D/g
+
+	silent! '<,'>s/AAJ/Ậ/g
+	silent! '<,'>s/AAX/Ẫ/g
+	silent! '<,'>s/AAR/Ẩ/g
+	silent! '<,'>s/AAS/Ấ/g
+	silent! '<,'>s/AAF/Ầ/g
+	silent! '<,'>s/AA\\/Â/g
+	silent! '<,'>s/AA/Â/g
+
+	silent! '<,'>s/AWJ/Ặ/g
+	silent! '<,'>s/AWX/Ẵ/g
+	silent! '<,'>s/AWR/Ẳ/g
+	silent! '<,'>s/AWS/Ắ/g
+	silent! '<,'>s/AWF/Ằ/g
+	silent! '<,'>s/AW\\/Ă/g
+	silent! '<,'>s/AW/Ă/g
+
+	silent! '<,'>s/AJ/Ạ/g
+	silent! '<,'>s/AX/Ã/g
+	silent! '<,'>s/AR/Ả/g
+	silent! '<,'>s/AS/Á/g
+	silent! '<,'>s/AF/À/g
+	silent! '<,'>s/A\\/A/g
+endfunction
+
+function! UnTelex()
+	silent! '<,'>s/À/AF/g
+	silent! '<,'>s/Á/AS/g
+	silent! '<,'>s/Ả/AR/g
+	silent! '<,'>s/Ã/AX/g
+	silent! '<,'>s/Ạ/AJ/g
+
+	silent! '<,'>s/Ă/AW/g
+	silent! '<,'>s/Ă/AW\\/g
+	silent! '<,'>s/Ằ/AWF/g
+	silent! '<,'>s/Ắ/AWS/g
+	silent! '<,'>s/Ẳ/AWR/g
+	silent! '<,'>s/Ẵ/AWX/g
+	silent! '<,'>s/Ặ/AWJ/g
+
+	silent! '<,'>s/Â/AA/g
+	silent! '<,'>s/Â/AA\\/g
+	silent! '<,'>s/Ầ/AAF/g
+	silent! '<,'>s/Ấ/AAS/g
+	silent! '<,'>s/Ẩ/AAR/g
+	silent! '<,'>s/Ẫ/AAX/g
+	silent! '<,'>s/Ậ/AAJ/g
+
+	silent! '<,'>s/Đ/DD/g
+
+	silent! '<,'>s/E/E\\/g
+	silent! '<,'>s/È/EF/g
+	silent! '<,'>s/É/ES/g
+	silent! '<,'>s/Ẻ/ER/g
+	silent! '<,'>s/Ẽ/EX/g
+	silent! '<,'>s/Ẹ/EJ/g
+
+	silent! '<,'>s/Ê/EE/g
+	silent! '<,'>s/Ê/EE\\/g
+	silent! '<,'>s/Ề/EEF/g
+	silent! '<,'>s/Ế/EES/g
+	silent! '<,'>s/Ể/EER/g
+	silent! '<,'>s/Ễ/EEX/g
+	silent! '<,'>s/Ệ/EEJ/g
+
+	silent! '<,'>s/Ì/IF/g
+	silent! '<,'>s/Í/IS/g
+	silent! '<,'>s/Ỉ/IR/g
+	silent! '<,'>s/Ĩ/IX/g
+	silent! '<,'>s/Ị/IJ/g
+
+	silent! '<,'>s/Ò/OF/g
+	silent! '<,'>s/Ó/OS/g
+	silent! '<,'>s/Ỏ/OR/g
+	silent! '<,'>s/Õ/OX/g
+	silent! '<,'>s/Ọ/OJ/g
+
+	silent! '<,'>s/Ô/OO/g
+	silent! '<,'>s/Ô/OO\\/g
+	silent! '<,'>s/Ồ/OOF/g
+	silent! '<,'>s/Ố/OOS/g
+	silent! '<,'>s/Ổ/OOR/g
+	silent! '<,'>s/Ỗ/OOX/g
+	silent! '<,'>s/Ộ/OOJ/g
+
+	silent! '<,'>s/Ơ/OW/g
+	silent! '<,'>s/Ơ/OW\\/g
+	silent! '<,'>s/Ờ/OWF/g
+	silent! '<,'>s/Ớ/OWS/g
+	silent! '<,'>s/Ở/OWR/g
+	silent! '<,'>s/Ỡ/OWX/g
+	silent! '<,'>s/Ợ/OWJ/g
+
+	silent! '<,'>s/Ù/UF/g
+	silent! '<,'>s/Ú/US/g
+	silent! '<,'>s/Ủ/UR/g
+	silent! '<,'>s/Ũ/UX/g
+	silent! '<,'>s/Ụ/UJ/g
+
+	silent! '<,'>s/Ư/UW/g
+	silent! '<,'>s/Ư/UW\\/g
+	silent! '<,'>s/Ừ/UWF/g
+	silent! '<,'>s/Ứ/UWS/g
+	silent! '<,'>s/Ử/UWR/g
+	silent! '<,'>s/Ữ/UWX/g
+	silent! '<,'>s/Ự/UWJ/g
+
+	silent! '<,'>s/Ỳ/YF/g
+	silent! '<,'>s/Ý/YS/g
+	silent! '<,'>s/Ỷ/YR/g
+	silent! '<,'>s/Ỹ/YX/g
+	silent! '<,'>s/Ỵ/YJ/g
+
+	silent! '<,'>s/à/af/g
+	silent! '<,'>s/á/as/g
+	silent! '<,'>s/ả/ar/g
+	silent! '<,'>s/ã/ax/g
+	silent! '<,'>s/ạ/aj/g
+
+	silent! '<,'>s/ă/aw/g
+	silent! '<,'>s/ă/aw\\/g
+	silent! '<,'>s/ằ/awf/g
+	silent! '<,'>s/ắ/aws/g
+	silent! '<,'>s/ẳ/awr/g
+	silent! '<,'>s/ẵ/awx/g
+	silent! '<,'>s/ặ/awj/g
+
+	silent! '<,'>s/â/aa/g
+	silent! '<,'>s/â/aa\\/g
+	silent! '<,'>s/ầ/aaf/g
+	silent! '<,'>s/ấ/aas/g
+	silent! '<,'>s/ẩ/aar/g
+	silent! '<,'>s/ẫ/aax/g
+	silent! '<,'>s/ậ/aaj/g
+
+	silent! '<,'>s/đ/dd/g
+
+	silent! '<,'>s/è/ef/g
+	silent! '<,'>s/é/es/g
+	silent! '<,'>s/ẻ/er/g
+	silent! '<,'>s/ẽ/ex/g
+	silent! '<,'>s/ẹ/ej/g
+
+	silent! '<,'>s/ê/ee/g
+	silent! '<,'>s/ê/ee\\/g
+	silent! '<,'>s/ề/eef/g
+	silent! '<,'>s/ế/ees/g
+	silent! '<,'>s/ể/eer/g
+	silent! '<,'>s/ễ/eex/g
+	silent! '<,'>s/ệ/eej/g
+
+	silent! '<,'>s/ì/if/g
+	silent! '<,'>s/í/is/g
+	silent! '<,'>s/ỉ/ir/g
+	silent! '<,'>s/ĩ/ix/g
+	silent! '<,'>s/ị/ij/g
+
+	silent! '<,'>s/ò/of/g
+	silent! '<,'>s/ó/os/g
+	silent! '<,'>s/ỏ/or/g
+	silent! '<,'>s/õ/ox/g
+	silent! '<,'>s/ọ/oj/g
+
+	silent! '<,'>s/ô/oo/g
+	silent! '<,'>s/ô/oo\\/g
+	silent! '<,'>s/ồ/oof/g
+	silent! '<,'>s/ố/oos/g
+	silent! '<,'>s/ổ/oor/g
+	silent! '<,'>s/ỗ/oox/g
+	silent! '<,'>s/ộ/ooj/g
+
+	silent! '<,'>s/ơ/ow/g
+	silent! '<,'>s/ơ/ow\\/g
+	silent! '<,'>s/ờ/owf/g
+	silent! '<,'>s/ớ/ows/g
+	silent! '<,'>s/ở/owr/g
+	silent! '<,'>s/ỡ/owx/g
+	silent! '<,'>s/ợ/owj/g
+
+	silent! '<,'>s/ù/uf/g
+	silent! '<,'>s/ú/us/g
+	silent! '<,'>s/ủ/ur/g
+	silent! '<,'>s/ũ/ux/g
+	silent! '<,'>s/ụ/uj/g
+
+	silent! '<,'>s/ư/uw/g
+	silent! '<,'>s/ư/uw\\/g
+	silent! '<,'>s/ừ/uwf/g
+	silent! '<,'>s/ứ/uws/g
+	silent! '<,'>s/ử/uwr/g
+	silent! '<,'>s/ữ/uwx/g
+	silent! '<,'>s/ự/uwj/g
+
+	silent! '<,'>s/ỳ/yf/g
+	silent! '<,'>s/ý/ys/g
+	silent! '<,'>s/ỷ/yr/g
+	silent! '<,'>s/ỹ/yx/g
+	silent! '<,'>s/ỵ/yj/g
+endfunction
