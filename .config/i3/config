@@ -184,12 +184,18 @@ bindsym $mod+r mode "resize"
 #         status_command i3status
 # }
 
+# default layout
+workspace_layout tabbed
+
+# default border style
+new_window pixel 1
+
 # switch workspace
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 
 # rename current workspace
-bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'Rename current workspace to: '
+bindsym $mod+n exec ~/.config/i3/i3-rename.sh
 
 # toggle status bar
 bindsym $mod+t bar mode toggle
@@ -201,11 +207,11 @@ bindsym $mod+b border toggle
 bindsym $mod+Shift+s sticky toggle
 
 # move and resize floating window
-bindsym $mod+z exec movesize.sh
+bindsym $mod+z exec ~/.config/i3/i3-move-size.sh
 
 # typing vietnamese
-bindsym $mod+v exec vn-typing
-for_window [title="vn-typing"] floating enable
+bindsym $mod+v exec ~/.config/i3/vn-typing.sh
+for_window [title="(float)"] floating enable
 
 # volume controller
 set $mode_volume Volume: [-] 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% [+] 
@@ -248,7 +254,7 @@ client.background         #ffffff
 
 # status bar
 bar {
-  status_command while sleep 1s; do date +'%d/%m/%Y %H:%M:%S '; done
+  status_command exec ~/.config/i3/status.sh
   position bottom
   mode dock
   workspace_buttons yes
@@ -266,5 +272,6 @@ bar {
   }
 }
 
-# wallpaper
+# autostart
 exec --no-startup-id ~/.config/i3/startup.sh
+

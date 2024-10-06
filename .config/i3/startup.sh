@@ -1,10 +1,16 @@
 #/usr/bin/env bash
 
+# resolution
+xrandr --output eDP-1 --mode 1368x768
+
+# config for dunst with HiDPI
+# xrandr --output eDP-1 --mode 1280x800 --dpi 120
+
 # wallpaper:
 ~/.fehbg &
 
 # compositor
-# compton&
+# compton &
 
 # mute volume:
 pactl set-sink-volume 0 0% &
@@ -14,9 +20,3 @@ xinput set-prop $(xinput list | grep Touchpad | awk '{print $6}' | cut -d '=' -f
 
 # notification daemon
 dunst &
-
-# resolution
-xrandr --output eDP-1 --mode 1368x768
-
-# brightness
-brightness 600
