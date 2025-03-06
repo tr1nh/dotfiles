@@ -21,6 +21,7 @@ set wildmenu
 
 " search
 set incsearch
+set ignorecase
 
 " default shell for terminal mode
 set shell=/bin/bash
@@ -36,6 +37,7 @@ set autoindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set expandtab
 
 " netrw
 let g:netrw_banner = 0
@@ -152,7 +154,8 @@ nnoremap <Leader>ul :set list!<CR>
 " map indent
 nnoremap <Leader>ia :set autoindent!<CR>
 nnoremap <Leader>ie :set expandtab!<CR>
-nnoremap <Leader>ir :%retab<CR>
+nnoremap <Leader>ir :%retab!<CR>
+vnoremap <Leader>ir :retab!<CR>
 nnoremap <Leader>i= ggvG=<C-o><C-o>
 nnoremap <Leader>i2 :set tabstop=2 \| set softtabstop=2 \| set shiftwidth=2<CR>
 nnoremap <Leader>i4 :set tabstop=4 \| set softtabstop=4 \| set shiftwidth=4<CR>
