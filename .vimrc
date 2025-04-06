@@ -21,7 +21,6 @@ set wildmenu
 
 " search
 set incsearch
-set ignorecase
 
 " default shell for terminal mode
 set shell=/bin/bash
@@ -37,7 +36,6 @@ set autoindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
 
 " netrw
 let g:netrw_banner = 0
@@ -89,21 +87,26 @@ inoremap <Leader>e1 <ESC>:!
 inoremap <Leader>e5 <ESC>:%!
 
 " map execute shell command for current line
-nnoremap <Leader>el 0v$hx:put=strftime('# %s')<CR>o<C-R>"<CR><ESC>:r!<C-r>"<CR>o<CR><ESC>
-inoremap <Leader>el <ESC>0v$hx:put=strftime('# %s')<CR>o<C-R>"<CR><ESC>:r!<C-r>"<CR>o<CR>
+nnoremap <Leader>el 0v$hx:put=strftime('# %s')<CR>A	<C-R>"<CR><ESC>:r!<C-r>"<CR>o<CR><ESC>
+inoremap <Leader>el <ESC>0v$hx:put=strftime('# %s')<CR>A	<C-R>"<CR><ESC>:r!<C-r>"<CR>o<CR>
+nnoremap <Leader>eo 0v$hx:r!<C-r>"<CR>o<CR><ESC>
+inoremap <Leader>eo <ESC>0v$hx:r!<C-r>"<CR>o<CR>
 
 " map execute shell command for current line in interactive mode
-nnoremap <Leader>ei 0v$hx:put=strftime('# %s')<CR>o<C-R>"<CR><ESC>:r!echo '<C-r>"' \| bash -i<CR>o<CR><ESC>
-inoremap <Leader>ei <ESC>0v$hx:put=strftime('# %s')<CR>o<C-R>"<CR><ESC>:r!echo '<C-r>"' \| bash -i<CR>o<CR>
+nnoremap <Leader>ei 0v$hx:put=strftime('# %s')<CR>A	<C-R>"<CR><ESC>:r!echo '<C-r>"' \| bash -i<CR>o<CR><ESC>
+inoremap <Leader>ei <ESC>0v$hx:put=strftime('# %s')<CR>A	<C-R>"<CR><ESC>:r!echo '<C-r>"' \| bash -i<CR>o<CR>
 
-" map datetime
-vnoremap <Leader>edt :s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y-%m-%d %H:%M:%S" \| tr -d "\n"')/g<CR>
-vnoremap <Leader>edT :s/\(\d\{4\}\)\(\d\{2\}\)\(\d\{2\}\)\(\d\{2\}\)\(\d\{2\}\)\(\d\{2\}\)/\1-\2\-\3 \4:\5:\6/g<CR>
+" map datetime (timestamp|datetime|iso)
+vnoremap <Leader>ds :s/\(\d\{10\}\)/\=system('date -d @' . submatch(1) . ' +"%Y%m%d%H%M%S" \| tr -d "\n"')/g<CR>
+vnoremap <Leader>dt :s/\(\d\{4\}\)\(\d\{2\}\)\(\d\{2\}\)\(\d\{2\}\)\(\d\{2\}\)\(\d\{2\}\)/\1-\2\-\3 \4:\5:\6/g<CR>
+vnoremap <Leader>di :s/\(\d\{4\}-\d\{2\}-\d\{2\} \d\{2\}:\d\{2\}:\d\{2\}\)/\=system('date -d "' . submatch(1) . '" +"%s" \| tr -d "\n"')/g<CR>
 
-nnoremap <Leader>edt :put=strftime('%s')<CR>
-inoremap <Leader>edt <Esc>:put=strftime('%s')<CR>A
-nnoremap <Leader>edT :put=strftime('%Y%m%d%H%M%S')<CR>
-inoremap <Leader>edT <Esc>:put=strftime('%Y%m%d%H%M%S')<CR>A
+nnoremap <Leader>ds :put=strftime('%s')<CR>
+inoremap <Leader>ds <Esc>:put=strftime('%s')<CR>A
+nnoremap <Leader>dt :put=strftime('%Y%m%d%H%M%S')<CR>
+inoremap <Leader>dt <Esc>:put=strftime('%Y%m%d%H%M%S')<CR>A
+nnoremap <Leader>di :put=strftime('%Y-%m-%d %H:%M:%S')<CR>
+inoremap <Leader>di <Esc>:put=strftime('%Y-%m-%d %H:%M:%S')<CR>A
 
 " map file explorer
 nnoremap <Leader>fe :Explore<CR>
@@ -154,8 +157,7 @@ nnoremap <Leader>ul :set list!<CR>
 " map indent
 nnoremap <Leader>ia :set autoindent!<CR>
 nnoremap <Leader>ie :set expandtab!<CR>
-nnoremap <Leader>ir :%retab!<CR>
-vnoremap <Leader>ir :retab!<CR>
+nnoremap <Leader>ir :%retab<CR>
 nnoremap <Leader>i= ggvG=<C-o><C-o>
 nnoremap <Leader>i2 :set tabstop=2 \| set softtabstop=2 \| set shiftwidth=2<CR>
 nnoremap <Leader>i4 :set tabstop=4 \| set softtabstop=4 \| set shiftwidth=4<CR>
@@ -277,14 +279,17 @@ tnoremap <Leader>w <C-w>
 
 " map filetype
 nnoremap <Leader>l0 :set ft=<CR>
+nnoremap <Leader>lm :set ft=markdown<CR>
 nnoremap <Leader>lh :set ft=html<CR>
 nnoremap <Leader>lc :set ft=css<CR>
 nnoremap <Leader>lj :set ft=javascript<CR>
-nnoremap <Leader>lJ :set ft=json<CR>
-nnoremap <Leader>ld :set ft=dart<CR>
-nnoremap <Leader>ls :set ft=sh<CR>
 nnoremap <Leader>lp :set ft=python<CR>
+nnoremap <Leader>ls :set ft=sh<CR>
+nnoremap <Leader>ld :set ft=dart<CR>
+nnoremap <Leader>lm :set ft=xml<CR>
+nnoremap <Leader>lJ :set ft=json<CR>
 nnoremap <Leader>ly :set ft=yaml<CR>
+nnoremap <Leader>lg :set ft=git<CR>
 
 " map file path completion
 inoremap <Leader>p <C-x><C-f>
@@ -316,7 +321,11 @@ nnoremap <Leader>xbd :%!base64 -d -w 0<CR>
 vnoremap <Leader>xbe :!base64 -w 0<CR>
 vnoremap <Leader>xbd :!base64 -d -w 0<CR>
 
+" map mark
+nnoremap <Leader>' :marks<CR>
+
 " map register
+nnoremap <Leader>r/ :registers<CR>
 nnoremap <Leader>ra ggVG"ay
 nnoremap <Leader>rb ggVG"by
 nnoremap <Leader>rc ggVG"cy
@@ -433,6 +442,7 @@ vnoremap <Leader>vt :<C-u>call VTelex()<CR>
 vnoremap <Leader>vu :<C-u>call UnTelex()<CR>
 vnoremap <Leader>vn :<C-u>call NoVietnamese()<CR>
 inoremap <Leader>v <ESC>V:call VTelex()<CR>A
+inoremap <Leader>V <ESC>V:call UnTelex()<CR>A
 
 function! VTelex()
 	silent! '<,'>s/yj/ỵ/g
@@ -624,6 +634,7 @@ function! VTelex()
 endfunction
 
 function! UnTelex()
+	silent! '<,'>s/A/A\\/g
 	silent! '<,'>s/À/AF/g
 	silent! '<,'>s/Á/AS/g
 	silent! '<,'>s/Ả/AR/g
@@ -646,8 +657,10 @@ function! UnTelex()
 	silent! '<,'>s/Ẫ/AAX/g
 	silent! '<,'>s/Ậ/AAJ/g
 
+	silent! '<,'>s/D/D\\/g
 	silent! '<,'>s/Đ/DD/g
 
+	silent! '<,'>s/E/E/g
 	silent! '<,'>s/E/E\\/g
 	silent! '<,'>s/È/EF/g
 	silent! '<,'>s/É/ES/g
@@ -663,12 +676,14 @@ function! UnTelex()
 	silent! '<,'>s/Ễ/EEX/g
 	silent! '<,'>s/Ệ/EEJ/g
 
+	silent! '<,'>s/I/I\\/g
 	silent! '<,'>s/Ì/IF/g
 	silent! '<,'>s/Í/IS/g
 	silent! '<,'>s/Ỉ/IR/g
 	silent! '<,'>s/Ĩ/IX/g
 	silent! '<,'>s/Ị/IJ/g
 
+	silent! '<,'>s/O/O\\/g
 	silent! '<,'>s/Ò/OF/g
 	silent! '<,'>s/Ó/OS/g
 	silent! '<,'>s/Ỏ/OR/g
@@ -691,6 +706,7 @@ function! UnTelex()
 	silent! '<,'>s/Ỡ/OWX/g
 	silent! '<,'>s/Ợ/OWJ/g
 
+	silent! '<,'>s/U/U\\/g
 	silent! '<,'>s/Ù/UF/g
 	silent! '<,'>s/Ú/US/g
 	silent! '<,'>s/Ủ/UR/g
@@ -705,12 +721,14 @@ function! UnTelex()
 	silent! '<,'>s/Ữ/UWX/g
 	silent! '<,'>s/Ự/UWJ/g
 
+	silent! '<,'>s/Y/Y\\/g
 	silent! '<,'>s/Ỳ/YF/g
 	silent! '<,'>s/Ý/YS/g
 	silent! '<,'>s/Ỷ/YR/g
 	silent! '<,'>s/Ỹ/YX/g
 	silent! '<,'>s/Ỵ/YJ/g
 
+	silent! '<,'>s/a/a\\/g
 	silent! '<,'>s/à/af/g
 	silent! '<,'>s/á/as/g
 	silent! '<,'>s/ả/ar/g
@@ -733,8 +751,10 @@ function! UnTelex()
 	silent! '<,'>s/ẫ/aax/g
 	silent! '<,'>s/ậ/aaj/g
 
+	silent! '<,'>s/d/d\\/g
 	silent! '<,'>s/đ/dd/g
 
+	silent! '<,'>s/e/e\\/g
 	silent! '<,'>s/è/ef/g
 	silent! '<,'>s/é/es/g
 	silent! '<,'>s/ẻ/er/g
@@ -749,12 +769,14 @@ function! UnTelex()
 	silent! '<,'>s/ễ/eex/g
 	silent! '<,'>s/ệ/eej/g
 
+	silent! '<,'>s/i/i\\/g
 	silent! '<,'>s/ì/if/g
 	silent! '<,'>s/í/is/g
 	silent! '<,'>s/ỉ/ir/g
 	silent! '<,'>s/ĩ/ix/g
 	silent! '<,'>s/ị/ij/g
 
+	silent! '<,'>s/o/o\\/g
 	silent! '<,'>s/ò/of/g
 	silent! '<,'>s/ó/os/g
 	silent! '<,'>s/ỏ/or/g
@@ -777,6 +799,7 @@ function! UnTelex()
 	silent! '<,'>s/ỡ/owx/g
 	silent! '<,'>s/ợ/owj/g
 
+	silent! '<,'>s/u/u\\/g
 	silent! '<,'>s/ù/uf/g
 	silent! '<,'>s/ú/us/g
 	silent! '<,'>s/ủ/ur/g
@@ -791,6 +814,7 @@ function! UnTelex()
 	silent! '<,'>s/ữ/uwx/g
 	silent! '<,'>s/ự/uwj/g
 
+	silent! '<,'>s/y/y\\/g
 	silent! '<,'>s/ỳ/yf/g
 	silent! '<,'>s/ý/ys/g
 	silent! '<,'>s/ỷ/yr/g
