@@ -1,8 +1,8 @@
-XTerm*font: xft:Mono:pixelsize=15
+XTerm*font: xft:Noto Mono:pixelsize=15
 XTerm*background: #000000
 XTerm*foreground: #ffffff
 
-URxvt*font: xft:Mono:pixelsize=13
+URxvt*font: xft:Noto Mono:pixelsize=13
 URxvt*background: #000000
 URxvt*foreground: #ffffff
 URxvt*scrollBar: false
