@@ -4,6 +4,6 @@
 # then substitude into vietnamese
 # and paste text into GUI
 
-urxvt -g 30x5 -T 'vn typing (float)' -e bash -c 'telex -b "$(read text && echo $text)"'
-xdotool key ctrl+v
-xdotool key BackSpace # to clear newline
+dmenu -b </dev/null | sed 's/\\n/\n/g' | telex | xclip -sel clipboard -in
+xdotool type "$(xclip -o -selection clipboard)"
+# xdotool key ctrl+v
