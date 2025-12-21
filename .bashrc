@@ -18,6 +18,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+HISTTIMEFORMAT='%F %T  '
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -116,6 +117,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# add timestamp for every executed commands
-export HISTTIMEFORMAT='%Y%m%d %H%M%S  '
+# environment variable
+export PATH="/opt/nodejs/bin:$HOME/.local/bin:$PATH"
+export EDITOR=vim
 
+# vi mode
+set -o vi
+bind '";;":"\e"'

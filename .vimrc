@@ -19,6 +19,10 @@ set viminfo='100,<1000,s100,h
 set laststatus=0
 set wildmenu
 
+" wordwrap
+set linebreak
+set nowrap
+
 " search
 set incsearch
 
@@ -32,10 +36,10 @@ set encoding=utf-8
 set path+=**
 
 " indentation
-set autoindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set noautoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " netrw
 let g:netrw_banner = 0
@@ -116,6 +120,10 @@ nnoremap <Leader>ft :Texplore<CR>
 nnoremap <Leader>fl :Lexplore %:p:h<CR>
 nnoremap <Leader>fr :Rexplore<CR>
 nnoremap <Leader>ff :find 
+
+" map fuzzy search files
+nnoremap <Leader>F :r!fzf<CR>v0$hyu:e <C-R>"<CR>
+nnoremap <Leader>T :r!fzf<CR>v0$hyu:tabnew <C-R>"<CR>
 
 " map clipboard
 nnoremap <Leader>cp "+gp<CR>Config
