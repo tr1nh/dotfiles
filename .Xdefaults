@@ -2,7 +2,16 @@ XTerm*font: xft:Noto Mono:pixelsize=15
 XTerm*background: #000000
 XTerm*foreground: #ffffff
 
-URxvt*font: xft:Noto Mono:pixelsize=13
+URxvt*font: xft:Noto Mono:pixelsize=15
 URxvt*background: #000000
 URxvt*foreground: #ffffff
 URxvt*scrollBar: false
+
+URxvt.perl-ext-common: font-size
+
+# URxvt.keysym.C-Up:     font-size:increase
+# URxvt.keysym.C-Down:   font-size:decrease
+# URxvt.keysym.C-S-Up:   font-size:incglobal
+# URxvt.keysym.C-S-Down: font-size:decglobal
+# URxvt.keysym.C-equal:  font-size:reset
+# URxvt.keysym.C-slash:  font-size:show
