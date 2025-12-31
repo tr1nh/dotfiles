@@ -42,9 +42,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-
-# start vim editor
-bindsym $mod+Shift+Return exec i3-sensible-terminal -e vim
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e screen -xRR
+bindsym $mod+Ctrl+Return exec i3-sensible-terminal -e vim
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -118,7 +117,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws11 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -153,36 +152,30 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+	# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+	# Pressing left will shrink the window’s width.
+	# Pressing right will grow the window’s width.
+	# Pressing up will shrink the window’s height.
+	# Pressing down will grow the window’s height.
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
+	# back to normal: Enter or Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+	}
 
 bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status
-# }
 
 # default layout
 workspace_layout tabbed
@@ -195,7 +188,7 @@ bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 
 # rename current workspace
-bindsym $mod+n exec ~/.config/i3/i3-rename.sh
+bindsym $mod+n exec i3-input -P 'Rename current workspace to: ' -F 'rename workspace to "%s"'
 
 # toggle status bar
 bindsym $mod+t bar mode toggle
@@ -216,29 +209,29 @@ for_window [title="(float)"] floating enable
 # volume controller
 set $mode_volume Volume: [-] 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% [+] 
 mode "$mode_volume" {
-  bindsym a exec --no-startup-id pavucontrol; mode "default"
-  bindsym 0 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%   && $refresh_i3status
-  bindsym 1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 10%  && $refresh_i3status
-  bindsym 2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20%  && $refresh_i3status
-  bindsym 3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 30%  && $refresh_i3status
-  bindsym 4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%  && $refresh_i3status
-  bindsym 5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%  && $refresh_i3status
-  bindsym 6 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 60%  && $refresh_i3status
-  bindsym 7 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 70%  && $refresh_i3status
-  bindsym 8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 80%  && $refresh_i3status
-  bindsym 9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 90%  && $refresh_i3status
+	bindsym a exec --no-startup-id pavucontrol; mode "default"
+	bindsym 0 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%   && $refresh_i3status
+	bindsym 1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 10%  && $refresh_i3status
+	bindsym 2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20%  && $refresh_i3status
+	bindsym 3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 30%  && $refresh_i3status
+	bindsym 4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%  && $refresh_i3status
+	bindsym 5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%  && $refresh_i3status
+	bindsym 6 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 60%  && $refresh_i3status
+	bindsym 7 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 70%  && $refresh_i3status
+	bindsym 8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 80%  && $refresh_i3status
+	bindsym 9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 90%  && $refresh_i3status
 
-  bindsym m exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150%  && $refresh_i3status
-  bindsym t exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-  bindsym d exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  && $refresh_i3status
-  bindsym i exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  && $refresh_i3status
-  bindsym minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  && $refresh_i3status
-  bindsym equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  && $refresh_i3status
+	bindsym m exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150%  && $refresh_i3status
+	bindsym t exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+	bindsym d exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  && $refresh_i3status
+	bindsym i exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  && $refresh_i3status
+	bindsym minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%  && $refresh_i3status
+	bindsym equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  && $refresh_i3status
 
-  bindsym q mode "default"
-  bindsym c mode "default"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+	bindsym q mode "default"
+	bindsym c mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+v mode "$mode_volume"
 
@@ -254,7 +247,8 @@ client.background         #ffffff
 
 # status bar
 bar {
-  status_command exec ~/.config/i3/status.sh
+  # status_command exec ~/.config/i3/status.sh
+  status_command while date; do sleep 5s; done
   position bottom
   mode dock
   workspace_buttons yes
@@ -275,115 +269,65 @@ bar {
 # autostart
 # exec --no-startup-id ~/.config/i3/startup.sh
 
-# Tạo mode "mouse"
+# mode "mouse"
 mode "mouse" {
-		# Nhấp chuột trái, phải
-		bindsym a exec xdotool click 1  # Nhấp chuột trái
-		bindsym d exec xdotool click 3  # Nhấp chuột phải
+	# Left and Right click
+	bindsym a exec xdotool click 1  # Left mouse click
+	bindsym d exec xdotool click 3  # Right mouse click
+	bindsym x exec xdotool click 2  # Middle mouse click
 
-		# Cuộn chuột
-		bindsym w exec xdotool click 4  # Cuộn lên
-		bindsym s exec xdotool click 5  # Cuộn xuống
+	# Mouse scroll
+	bindsym w exec xdotool click 4  # Scroll up
+	bindsym s exec xdotool click 5  # Scroll down
 
-		# Kéo và thả
-		bindsym z exec xdotool mousedown 1  # Nhấn giữ chuột trái
-		bindsym c exec xdotool mousedown 3	# Nhấn giữ chuột phải
+	# Drag and Drop
+	bindsym z exec xdotool mousedown 1  # Hold left mouse button
+	bindsym c exec xdotool mousedown 3  # Hold right mouse button
 
-    # Di chuyển con trỏ chuột
-    bindsym h exec xdotool mousemove_relative -- -50 0  # Di chuyển sang trái
-    bindsym j exec xdotool mousemove_relative -- 0 50   # Di chuyển xuống
-    bindsym k exec xdotool mousemove_relative -- 0 -50  # Di chuyển lên
-    bindsym l exec xdotool mousemove_relative -- 50 0   # Di chuyển sang phải
-    bindsym y exec xdotool mousemove_relative -- -50 -50  # Di chuyển lên trái
-    bindsym u exec xdotool mousemove_relative -- 50 -50   # Di chuyển lên phải
-    bindsym b exec xdotool mousemove_relative -- -50 50   # Di chuyển xuống trái
-    bindsym n exec xdotool mousemove_relative -- 50 50    # Di chuyển xuống phải
+	# Move mouse cursor
+	bindsym h exec xdotool mousemove_relative -- -50 0  # Move left
+	bindsym j exec xdotool mousemove_relative -- 0 50   # Move down
+	bindsym k exec xdotool mousemove_relative -- 0 -50  # Move up
+	bindsym l exec xdotool mousemove_relative -- 50 0   # Move right
+	bindsym y exec xdotool mousemove_relative -- -50 -50  # Move up-left
+	bindsym u exec xdotool mousemove_relative -- 50 -50   # Move up-right
+	bindsym b exec xdotool mousemove_relative -- -50 50   # Move down-left
+	bindsym n exec xdotool mousemove_relative -- 50 50    # Move down-right
 
-    # Di chuyển con trỏ chuột chậm hơn
-    bindsym Shift+h exec xdotool mousemove_relative -- -10 0  # Di chuyển sang trái
-    bindsym Shift+j exec xdotool mousemove_relative -- 0 10   # Di chuyển xuống
-    bindsym Shift+k exec xdotool mousemove_relative -- 0 -10  # Di chuyển lên
-    bindsym Shift+l exec xdotool mousemove_relative -- 10 0   # Di chuyển sang phải
-    bindsym Shift+y exec xdotool mousemove_relative -- -10 -10  # Di chuyển lên trái
-    bindsym Shift+u exec xdotool mousemove_relative -- 10 -10   # Di chuyển lên phải
-    bindsym Shift+b exec xdotool mousemove_relative -- -10 10   # Di chuyển xuống trái
-    bindsym Shift+n exec xdotool mousemove_relative -- 10 10    # Di chuyển xuống phải
+	# Move cursor slower
+	bindsym Shift+h exec xdotool mousemove_relative -- -10 0  # Move left
+	bindsym Shift+j exec xdotool mousemove_relative -- 0 10   # Move down
+	bindsym Shift+k exec xdotool mousemove_relative -- 0 -10  # Move up
+	bindsym Shift+l exec xdotool mousemove_relative -- 10 0   # Move right
+	bindsym Shift+y exec xdotool mousemove_relative -- -10 -10  # Move up-left
+	bindsym Shift+u exec xdotool mousemove_relative -- 10 -10   # Move up-right
+	bindsym Shift+b exec xdotool mousemove_relative -- -10 10   # Move down-left
+	bindsym Shift+n exec xdotool mousemove_relative -- 10 10    # Move down-right
 
-    # Di chuyển con trỏ chuột nhanh hơn
-		bindsym Control+h exec xdotool mousemove_relative -- -100 0  # Di chuyển nhanh sang trái
-		bindsym Control+j exec xdotool mousemove_relative -- 0 100   # Di chuyển nhanh xuống
-		bindsym Control+k exec xdotool mousemove_relative -- 0 -100  # Di chuyển nhanh lên
-		bindsym Control+l exec xdotool mousemove_relative -- 100 0   # Di chuyển nhanh sang phải
-		bindsym Control+y exec xdotool mousemove_relative -- -100 -100  # Di chuyển nhanh lên trái
-		bindsym Control+u exec xdotool mousemove_relative -- 100 -100   # Di chuyển nhanh lên phải
-		bindsym Control+b exec xdotool mousemove_relative -- -100 100   # Di chuyển nhanh xuống trái
-		bindsym Control+n exec xdotool mousemove_relative -- 100 100    # Di chuyển nhanh xuống phải
+	# Move cursor faster
+	bindsym Control+h exec xdotool mousemove_relative -- -100 0  # Move left fast
+	bindsym Control+j exec xdotool mousemove_relative -- 0 100   # Move down fast
+	bindsym Control+k exec xdotool mousemove_relative -- 0 -100  # Move up fast
+	bindsym Control+l exec xdotool mousemove_relative -- 100 0   # Move right fast
+	bindsym Control+y exec xdotool mousemove_relative -- -100 -100  # Move up-left fast
+	bindsym Control+u exec xdotool mousemove_relative -- 100 -100   # Move up-right fast
+	bindsym Control+b exec xdotool mousemove_relative -- -100 100   # Move down-left fast
+	bindsym Control+n exec xdotool mousemove_relative -- 100 100    # Move down-right fast
 
-    # Di chuyển con trỏ chuột đến các ô trong màn hình chia 3x3
-    bindsym 1 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô trên cùng bên trái
-    bindsym 2 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô trên cùng ở giữa
-    bindsym 3 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô trên cùng bên phải
-    bindsym 4 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô giữa bên trái
-    bindsym 5 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô giữa ở giữa
-    bindsym 6 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô giữa bên phải
-    bindsym 7 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô dưới cùng bên trái
-    bindsym 8 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô dưới cùng ở giữa
-    bindsym 9 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Ô dưới cùng bên phải
+	# Move cursor to cells in a 3x3 grid on the screen
+	bindsym 1 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Top left cell
+	bindsym 2 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Top middle cell
+	bindsym 3 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Top right cell
+	bindsym 4 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Middle left cell
+	bindsym 5 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Center cell
+	bindsym 6 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Middle right cell
+	bindsym 7 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Bottom left cell
+	bindsym 8 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Bottom middle cell
+	bindsym 9 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 6)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 3 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 6))  # Bottom right cell
 
-		# mode grid
-		bindsym g mode "grid"
-
-    # Thoát khỏi mode "mouse"
-    bindsym Escape mode "default"
+	# Exit "mouse" mode
+	bindsym Escape mode "default"
 }
 
-# Kích hoạt mode "mouse"
+# Active mode "mouse"
 bindsym $mod+m mode "mouse"
-
-# Tạo mode "grid" để di chuyển con trỏ chuột trong màn hình chia 7x4
-mode "grid" {
-    # Hàng đầu tiên (2, 3, 4, 5, 6, 7, 8)
-    bindsym 2 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym 3 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym 4 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym 5 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym 6 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 4 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym 7 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 5 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym 8 exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 6 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-
-    # Hàng thứ hai (w, e, r, t, y, u, i)
-    bindsym w exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym e exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym r exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym t exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym y exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 4 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym u exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 5 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym i exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 6 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-
-    # Hàng thứ ba (s, d, f, g, h, j, k)
-    bindsym s exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym d exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym f exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym g exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym h exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 4 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym j exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 5 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym k exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 6 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-
-    # Hàng thứ tư (z, x, c, v, b, n, m)
-    bindsym z exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 0 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym x exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 1 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym c exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 2 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym v exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym b exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 4 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym n exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 5 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-    bindsym m exec xdotool mousemove $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 7 * 6 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f1) / 14)) $(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 4 * 3 + $(xdpyinfo | awk '/dimensions/{print $2}' | cut -d'x' -f2) / 8))
-
-		# mode mouse
-		bindsym $mod+m mode "mouse"
-
-    # Thoát khỏi mode "grid"
-    bindsym Escape mode "default"
-}
-
-# Kích hoạt mode "grid"
-bindsym $mod+g mode "grid"
