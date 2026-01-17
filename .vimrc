@@ -293,8 +293,9 @@ nnoremap <Leader>lc :set ft=css<CR>
 nnoremap <Leader>lj :set ft=javascript<CR>
 nnoremap <Leader>lp :set ft=python<CR>
 nnoremap <Leader>ls :set ft=sh<CR>
-nnoremap <Leader>ld :set ft=dart<CR>
-nnoremap <Leader>lm :set ft=xml<CR>
+nnoremap <Leader>ld :set ft=diff<CR>
+nnoremap <Leader>lD :set ft=dart<CR>
+nnoremap <Leader>lx :set ft=xml<CR>
 nnoremap <Leader>lJ :set ft=json<CR>
 nnoremap <Leader>ly :set ft=yaml<CR>
 nnoremap <Leader>lg :set ft=git<CR>
@@ -333,114 +334,7 @@ vnoremap <Leader>xbd :!base64 -d -w 0<CR>
 nnoremap <Leader>' :marks<CR>
 
 " map register
-nnoremap <Leader>r/ :registers<CR>
-nnoremap <Leader>ra ggVG"ay
-nnoremap <Leader>rb ggVG"by
-nnoremap <Leader>rc ggVG"cy
-nnoremap <Leader>rd ggVG"dy
-nnoremap <Leader>re ggVG"ey
-nnoremap <Leader>rf ggVG"fy
-nnoremap <Leader>rg ggVG"gy
-nnoremap <Leader>rh ggVG"hy
-nnoremap <Leader>ri ggVG"iy
-nnoremap <Leader>rj ggVG"jy
-nnoremap <Leader>rk ggVG"ky
-nnoremap <Leader>rl ggVG"ly
-nnoremap <Leader>rm ggVG"my
-nnoremap <Leader>rn ggVG"ny
-nnoremap <Leader>ro ggVG"oy
-nnoremap <Leader>rp ggVG"py
-nnoremap <Leader>rq ggVG"qy
-nnoremap <Leader>rr ggVG"ry
-nnoremap <Leader>rs ggVG"sy
-nnoremap <Leader>rt ggVG"ty
-nnoremap <Leader>ru ggVG"uy
-nnoremap <Leader>rv ggVG"vy
-nnoremap <Leader>rw ggVG"wy
-nnoremap <Leader>rx ggVG"xy
-nnoremap <Leader>ry ggVG"yy
-nnoremap <Leader>rz ggVG"zy
-
-nnoremap <Leader>rA ggVG"Ay
-nnoremap <Leader>rB ggVG"By
-nnoremap <Leader>rC ggVG"Cy
-nnoremap <Leader>rD ggVG"Dy
-nnoremap <Leader>rE ggVG"Ey
-nnoremap <Leader>rF ggVG"Fy
-nnoremap <Leader>rG ggVG"Gy
-nnoremap <Leader>rH ggVG"Hy
-nnoremap <Leader>rI ggVG"Iy
-nnoremap <Leader>rJ ggVG"Jy
-nnoremap <Leader>rK ggVG"Ky
-nnoremap <Leader>rL ggVG"Ly
-nnoremap <Leader>rM ggVG"My
-nnoremap <Leader>rN ggVG"Ny
-nnoremap <Leader>rO ggVG"Oy
-nnoremap <Leader>rP ggVG"Py
-nnoremap <Leader>rQ ggVG"Qy
-nnoremap <Leader>rR ggVG"Ry
-nnoremap <Leader>rS ggVG"Sy
-nnoremap <Leader>rT ggVG"Ty
-nnoremap <Leader>rU ggVG"Uy
-nnoremap <Leader>rV ggVG"Vy
-nnoremap <Leader>rW ggVG"Wy
-nnoremap <Leader>rX ggVG"Xy
-nnoremap <Leader>rY ggVG"Yy
-nnoremap <Leader>rZ ggVG"Zy
-
-vnoremap <Leader>ra "ay
-vnoremap <Leader>rb "by
-vnoremap <Leader>rc "cy
-vnoremap <Leader>rd "dy
-vnoremap <Leader>re "ey
-vnoremap <Leader>rf "fy
-vnoremap <Leader>rg "gy
-vnoremap <Leader>rh "hy
-vnoremap <Leader>ri "iy
-vnoremap <Leader>rj "jy
-vnoremap <Leader>rk "ky
-vnoremap <Leader>rl "ly
-vnoremap <Leader>rm "my
-vnoremap <Leader>rn "ny
-vnoremap <Leader>ro "oy
-vnoremap <Leader>rp "py
-vnoremap <Leader>rq "qy
-vnoremap <Leader>rr "ry
-vnoremap <Leader>rs "sy
-vnoremap <Leader>rt "ty
-vnoremap <Leader>ru "uy
-vnoremap <Leader>rv "vy
-vnoremap <Leader>rw "wy
-vnoremap <Leader>rx "xy
-vnoremap <Leader>ry "yy
-vnoremap <Leader>rz "zy
-
-vnoremap <Leader>rA "Ay
-vnoremap <Leader>rB "By
-vnoremap <Leader>rC "Cy
-vnoremap <Leader>rD "Dy
-vnoremap <Leader>rE "Ey
-vnoremap <Leader>rF "Fy
-vnoremap <Leader>rG "Gy
-vnoremap <Leader>rH "Hy
-vnoremap <Leader>rI "Iy
-vnoremap <Leader>rJ "Jy
-vnoremap <Leader>rK "Ky
-vnoremap <Leader>rL "Ly
-vnoremap <Leader>rM "My
-vnoremap <Leader>rN "Ny
-vnoremap <Leader>rO "Oy
-vnoremap <Leader>rP "Py
-vnoremap <Leader>rQ "Qy
-vnoremap <Leader>rR "Ry
-vnoremap <Leader>rS "Sy
-vnoremap <Leader>rT "Ty
-vnoremap <Leader>rU "Uy
-vnoremap <Leader>rV "Vy
-vnoremap <Leader>rW "Wy
-vnoremap <Leader>rX "Xy
-vnoremap <Leader>rY "Yy
-vnoremap <Leader>rZ "Zy
+nnoremap <Leader>" :registers<CR>
 
 " macos vim doesn't support keymap
 nnoremap <Leader>vt ggVG:call VTelex()<CR>
@@ -1004,3 +898,13 @@ function! NoVietnamese()
 	silent! '<,'>s/ỹ/y/g
 	silent! '<,'>s/ỵ/y/g
 endfunction
+
+" map git
+nnoremap <Leader>gs :r!git status<CR>
+nnoremap <Leader>gd :r!git diff<CR>
+nnoremap <Leader>gD :r!git diff %<CR>
+nnoremap <Leader>gl :r!git log --oneline<CR>
+nnoremap <Leader>gL :r!git log<CR>
+nnoremap <Leader>gP :r!git push origin 
+nnoremap <Leader>gf :r!git fetch<CR>
+nnoremap <Leader>gp :r!git pull
