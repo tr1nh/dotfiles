@@ -126,13 +126,13 @@ nnoremap <Leader>F :r!fzf<CR>v0$hyu:e <C-R>"<CR>
 nnoremap <Leader>T :r!fzf<CR>v0$hyu:tabnew <C-R>"<CR>
 
 " map clipboard
-nnoremap <Leader>cp "+gp<CR>Config
-nnoremap <Leader>cl 0v$h"+y$
-vnoremap <Leader>cy "+y<CR>
-vnoremap <Leader>cx "+x<CR>
-vnoremap <Leader>cp "+gp<CR>
-inoremap <Leader>cp <Esc>"+gpa<CR>
-inoremap <Leader>cl <ESC>0v$h"+y$a
+nnoremap <Leader>cp :r!xclip -sel clipboard -out<CR>
+nnoremap <Leader>cl 0v$hy$:call system('xclip -sel clipboard -in', getreg('"'))<CR>
+vnoremap <Leader>cy y:call system('xclip -sel clipboard -in', getreg('"'))<CR>
+vnoremap <Leader>cx x:call system('xclip -sel clipboard -in', getreg('"'))<CR>
+vnoremap <Leader>cp :!xclip -sel clipboard -out<CR>
+inoremap <Leader>cp <Esc>:r!xclip -sel clipboard -out<CR>a
+inoremap <Leader>cl <ESC>0v$hy:call system('xclip -sel clipboard -in', getreg('"'))<CR>$a
 
 " map vietnamese keymap
 nnoremap <Leader>k0 :set keymap=<CR>
@@ -901,10 +901,14 @@ endfunction
 
 " map git
 nnoremap <Leader>gs :r!git status<CR>
-nnoremap <Leader>gd :r!git diff<CR>
-nnoremap <Leader>gD :r!git diff %<CR>
-nnoremap <Leader>gl :r!git log --oneline<CR>
+nnoremap <Leader>gd :r!git diff 
+nnoremap <Leader>gd1 :r!git diff @~1 @<CR>
+nnoremap <Leader>gd5 :r!git diff %<CR>
+nnoremap <Leader>gl :r!git log --oneline --graph --all --decorate<CR>
 nnoremap <Leader>gL :r!git log<CR>
 nnoremap <Leader>gP :r!git push origin 
 nnoremap <Leader>gf :r!git fetch<CR>
 nnoremap <Leader>gp :r!git pull
+nnoremap <Leader>ga :r!git add 
+nnoremap <Leader>gA :r!git add -A<CR>
+nnoremap <Leader>gr :r!git reset .<CR>
