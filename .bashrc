@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=8000
+HISTFILESIZE=9000
 HISTTIMEFORMAT='%F %T  '
 
 # check the window size after each command and, if necessary,
@@ -120,6 +120,7 @@ fi
 # environment variable
 export PATH="/opt/nodejs/bin:$HOME/.local/bin:$PATH"
 export EDITOR=vim
+export TERM=xterm-256color
 
 # vi mode
 set -o vi
