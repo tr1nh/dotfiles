@@ -1,0 +1,87 @@
+# Tự chạy ngầm và xóa các phím mặc định để tránh xung đột
+# daemonize
+clear
+
+# ==============================================================================
+# PHÍM KÍCH HOẠT & THOÁT
+# ==============================================================================
+ctrl+semicolon start
+super+m start
+
+# Phím Escape là cách DUY NHẤT để thoát
+Escape end
+
+# ==============================================================================
+# CLICK & CUỘN (Không thoát grid)
+# ==============================================================================
+a warp,click 1          # Click trái
+d warp,click 3          # Click phải
+x warp,click 2          # Click giữa
+
+w warp,click 4          # Cuộn lên
+s warp,click 5          # Cuộn xuống
+q warp,click 6          # Cuộn trái
+e warp,click 7          # Cuộn phải
+
+z drag 1                # Giữ chuột trái kéo/thả
+
+# ==============================================================================
+# 1. ĐIỀU HƯỚNG CẮT LƯỚI CHÍNH (Thu hẹp vùng chọn nhanh)
+# ==============================================================================
+h cut-left
+j cut-down
+k cut-up
+l cut-right
+
+# Cắt chéo theo góc
+y cut-left,cut-up
+u cut-right,cut-up
+b cut-left,cut-down
+n cut-right,cut-down
+
+# ==============================================================================
+# 2. DI CHUYỂN CHUỘT THEO TỪNG MỨC TỐC ĐỘ
+# ==============================================================================
+
+# --- MỨC 1: DI CHUYỂN TIÊU CHUẨN (50 pixel) ---
+# Dùng Ctrl + h/j/k/l hoặc Phím Mũi tên trực tiếp
+ctrl+h move-left 50,warp
+ctrl+j move-down 50,warp
+ctrl+k move-up 50,warp
+ctrl+l move-right 50,warp
+
+Left move-left 50,warp
+Down move-down 50,warp
+Up move-up 50,warp
+Right move-right 50,warp
+
+# --- MỨC 2: VI CHỈNH CHÍNH XÁC (10 pixel) ---
+# Dùng Shift + h/j/k/l hoặc Shift + Phím Mũi tên
+shift+h move-left 10,warp
+shift+j move-down 10,warp
+shift+k move-up 10,warp
+shift+l move-right 10,warp
+
+shift+Left move-left 10,warp
+shift+Down move-down 10,warp
+shift+Up move-up 10,warp
+shift+Right move-right 10,warp
+
+# --- MỨC 3: LƯỚT SIÊU NHANH (150 pixel) ---
+# Dùng Alt + h/j/k/l
+alt+h move-left 150,warp
+alt+j move-down 150,warp
+alt+k move-up 150,warp
+alt+l move-right 150,warp
+
+# ==============================================================================
+# CÁC TIỆN ÍCH KHÁC
+# ==============================================================================
+# Phím 'c': Thu nhỏ khung ngắm lại thành ô vuông 40x40 pixel ngay tại vị trí trỏ chuột
+c cursorzoom 200 200
+
+# Phím Backspace để Undo bước cắt lưới vừa rồi
+BackSpace history-back
+
+# Phím Space: Dịch chuột vào tâm khung hiện tại
+space warp

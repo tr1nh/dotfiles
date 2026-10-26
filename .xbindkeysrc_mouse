@@ -1,0 +1,145 @@
+# ==============================================================================
+# XBINDKEYS: MOUSE MODE CONFIG
+# ==============================================================================
+
+# --- Chuột Trái, Phải, Giữa ---
+"xdotool click 1"
+    a
+
+"xdotool click 3"
+    d
+
+"xdotool click 2"
+    x
+
+# --- Cuộn chuột (Scroll) ---
+"xdotool click 4"
+    w
+
+"xdotool click 5"
+    s
+
+# --- Kéo và thả (Drag & Drop) ---
+"xdotool mousedown 1"
+    z
+
+"xdotool mousedown 3"
+    c
+
+# Nhả nút chuột (Đề xuất thêm nếu bạn muốn nhả chuột sau khi mousedown)
+"xdotool mouseup 1"
+    Shift + z
+
+"xdotool mouseup 3"
+    Shift + c
+
+# --- Di chuyển chuột cơ bản (50px) ---
+"xdotool mousemove_relative -- -50 0"
+    h
+
+"xdotool mousemove_relative -- 0 50"
+    j
+
+"xdotool mousemove_relative -- 0 -50"
+    k
+
+"xdotool mousemove_relative -- 50 0"
+    l
+
+"xdotool mousemove_relative -- -50 -50"
+    y
+
+"xdotool mousemove_relative -- 50 -50"
+    u
+
+"xdotool mousemove_relative -- -50 50"
+    b
+
+"xdotool mousemove_relative -- 50 50"
+    n
+
+# --- Di chuyển chậm (10px) ---
+"xdotool mousemove_relative -- -10 0"
+    Shift + h
+
+"xdotool mousemove_relative -- 0 10"
+    Shift + j
+
+"xdotool mousemove_relative -- 0 -10"
+    Shift + k
+
+"xdotool mousemove_relative -- 10 0"
+    Shift + l
+
+"xdotool mousemove_relative -- -10 -10"
+    Shift + y
+
+"xdotool mousemove_relative -- 10 -10"
+    Shift + u
+
+"xdotool mousemove_relative -- -10 10"
+    Shift + b
+
+"xdotool mousemove_relative -- 10 10"
+    Shift + n
+
+# --- Di chuyển nhanh (100px) ---
+"xdotool mousemove_relative -- -100 0"
+    Control + h
+
+"xdotool mousemove_relative -- 0 100"
+    Control + j
+
+"xdotool mousemove_relative -- 0 -100"
+    Control + k
+
+"xdotool mousemove_relative -- 100 0"
+    Control + l
+
+"xdotool mousemove_relative -- -100 -100"
+    Control + y
+
+"xdotool mousemove_relative -- 100 -100"
+    Control + u
+
+"xdotool mousemove_relative -- -100 100"
+    Control + b
+
+"xdotool mousemove_relative -- 100 100"
+    Control + n
+
+# --- Nhảy đến lưới 3x3 ---
+"$HOME/.local/bin/mouse-grid.sh 1"
+    1
+
+"$HOME/.local/bin/mouse-grid.sh 2"
+    2
+
+"$HOME/.local/bin/mouse-grid.sh 3"
+    3
+
+"$HOME/.local/bin/mouse-grid.sh 4"
+    4
+
+"$HOME/.local/bin/mouse-grid.sh 5"
+    5
+
+"$HOME/.local/bin/mouse-grid.sh 6"
+    6
+
+"$HOME/.local/bin/mouse-grid.sh 7"
+    7
+
+"$HOME/.local/bin/mouse-grid.sh 8"
+    8
+
+"$HOME/.local/bin/mouse-grid.sh 9"
+    9
+
+# --- Thoát khỏi chế độ Mouse Mode ---
+"pkill -f 'xbindkeys -f .*\.xbindkeysrc_mouse' && notify-send 'Mouse Mode' 'OFF' -t 800"
+    Escape
+
+# Bấm phím r để reset khung ngắm về toàn màn hình
+"$HOME/.local/bin/mouse-grid.sh reset"
+    r
