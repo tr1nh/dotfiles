@@ -28,16 +28,16 @@ z drag 1                # Giữ chuột trái kéo/thả
 # ==============================================================================
 # 1. ĐIỀU HƯỚNG CẮT LƯỚI CHÍNH (Thu hẹp vùng chọn nhanh)
 # ==============================================================================
-h cut-left
-j cut-down
-k cut-up
-l cut-right
+h cut-left,warp
+j cut-down,warp
+k cut-up,warp
+l cut-right,warp
 
 # Cắt chéo theo góc
-y cut-left,cut-up
-u cut-right,cut-up
-b cut-left,cut-down
-n cut-right,cut-down
+y cut-left,cut-up,warp
+u cut-right,cut-up,warp
+b cut-left,cut-down,warp
+n cut-right,cut-down,warp
 
 # ==============================================================================
 # 2. DI CHUYỂN CHUỘT THEO TỪNG MỨC TỐC ĐỘ
